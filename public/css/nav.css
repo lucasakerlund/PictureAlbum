@@ -1,0 +1,146 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: relative;
+    min-height: 80px;
+    width: 100vw;
+    background-color: #121213f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.navbar-logo{
+    display: flex;
+    background: linear-gradient(to right, orange, red, blue);
+    justify-content: center;
+    padding-left: 20px;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight:bold;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    height: 80px;
+    z-index: 998;
+}
+
+.navbar-item {
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    margin: auto 15px;
+}
+
+.navbar-text {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.navbar-text:hover {
+    color: grey;
+    transition: all .3s ease;
+}
+
+.navbar-upload {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.navbar-upload:hover {
+    color: grey;
+    transition: all .3s ease;
+}
+
+#hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.hamburger-line {
+    background-color: #fff;
+    height: 3px;
+    width: 35px;
+    margin: 3px auto;
+}
+
+@media (max-width: 700px) {
+
+    @keyframes nav-animation {
+        from{
+            height: 0vh;
+        }
+        to {
+            height: 20vh;
+        }
+    }
+    .navbar-menu {
+        position: absolute;
+        display: flex;
+        visibility: hidden;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        width: 100vw;
+        top: 80px;
+        height: 0vh;
+        background-color: #121213f8;
+        border-bottom: 1px solid white;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        visibility: visible;
+        height: 20vh;
+        animation-name: nav-animation;
+        animation-duration: .2s;
+    }
+
+    .navbar-item {
+        display: flex;
+    }
+
+    #hamburger-menu {
+        visibility: visible;
+    }
+
+    .hamburger-line {
+        transition: all .3s ease;
+    }
+
+    #hamburger-menu.active .hamburger-line:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        transition: all .3s ease;
+    }
+    #hamburger-menu.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    #hamburger-menu.active .hamburger-line:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        transition: all .3s ease;
+    }
+    
+}

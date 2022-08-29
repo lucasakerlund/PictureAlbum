@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../components/head.ejs') %>
+    <link rel="stylesheet" href="/css/album.css">
+<body>
+    
+    <%- include('../components/nav.ejs') %>
+    
+    <div class="menu">
+        <a class="back" href="/albums"><img src="/left-arrow.svg" alt="back arrow"></a>
+        <div class="title"><%= album.title %></div>
+        <div class="tools"></div>
+    </div>
+
+    <div class="content">
+        <% pictures.forEach(picture => { %>
+            <div class="album-container">
+                <p><%= picture.title %></p>
+                <div class="image-container">
+                    <a class="album-clickable" href="/albums/presentation/<%= album.id %>/<%= pictures.findIndex(p => p.id == picture.id) %>">
+                        <% if (picture.imgLoRes) { %>
+                            <img src="/<%= picture.imgLoRes %>" alt="no image available">
+                        <% }else { %>
+                            <img src="/no-image-available.svg" alt="no image available">
+                        <% } %>
+                    </a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+</body>
+</html>

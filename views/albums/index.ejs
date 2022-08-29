@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../components/head.ejs') %>
+    <link rel="stylesheet" href="/css/albums.css">
+<body>
+
+    <%- include('../components/nav.ejs')%>
+    
+    <div class="content">
+        <% albums.forEach(album => { %>
+            <div class="album-container">
+                <p><%= album.title %></p>
+                <div class="image-container">
+                    <a class="album-clickable" href="/albums/<%= album.id %>">
+                        <% if (album.image) { %>
+                            <img src="/<%= album.image %>" alt="no image available">
+                        <% }else { %>
+                            <img src="/no-image-available.svg" alt="no image available">
+                        <% } %>
+                    </a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    
+</body>
+</html>

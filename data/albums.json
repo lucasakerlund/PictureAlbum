@@ -1,0 +1,16 @@
+[
+  {
+    "id": "test",
+    "title": "Album1",
+    "description": "Detta är en beskrivning",
+    "image": "PIA16008~small.jpg",
+    "picture_ids": ["l66egbjmdy9wsosa5wu", "12343", "523523"]
+  },
+  {
+    "id": "123",
+    "title": "Album2",
+    "description": "Detta är en beskrivning",
+    "image": "PIA03244~small.jpg",
+    "picture_ids": ["l66egbjmdy9wsosa5wu"]
+  }
+]

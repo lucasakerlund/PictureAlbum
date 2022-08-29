@@ -1,0 +1,223 @@
+{
+  "albums": [
+    {
+      "id": "l66egbjmvn3b62yhxlm",
+      "title": "Galaxies",
+      "comment": "There are inifinte of them in the universe",
+      "path": "app-data/library/pictures/galaxies",
+      "headerImage": "app-data/library/pictures/album-header/PIA04921~small.jpg",
+      "pictures": [
+        {
+          "id": "l66egbjmdy9wsosa5wu",
+          "title": "History of Hubble Space Telescope (HST)",
+          "comment": "The razor sharp eye of the Hubble Space Telescope (HST) easily resolves the Sombrero galaxy, Messier 104 (M104). 50,000 light-years across, the galaxy is located 28 million light-years from Earth at the southern edge of the rich Virgo cluster of galaxies. Equivalent to 800 billion suns, Sombrero is one of the most massive objects in that group.",
+          "imgLoRes": "0700064~small.jpg",
+          "imgHiRes": "0700064~orig.jpg"
+        },
+        {
+          "id": "l66egbjmabozh33hd2",
+          "title": "Hubble's Glittering Frisbee Galaxy",
+          "comment": "This image from Hubble’s Wide Field Camera 3 (WFC3) shows a section of NGC 1448, a spiral galaxy located about 50 million light-years from Earth in the little-known constellation of Horologium (The Pendulum Clock).",
+          "imgLoRes": "GSFC_20171208_Archive_e000117~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000117~orig.jpg"
+        },
+        {
+          "id": "l66egbjmw0rz7dhu0j",
+          "title": "NASA's Hubble Celebrates 21st Anniversary with \"Rose\" of Galaxies",
+          "comment": "To celebrate the 21st anniversary of the Hubble Space Telescope's deployment into space, astronomers at the Space Telescope Science Institute in Baltimore, Md., pointed Hubble's eye at an especially photogenic pair of interacting galaxies called Arp 273. ",
+          "imgLoRes": "GSFC_20171208_Archive_e001885~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e001885~orig.jpg"
+        },
+        {
+          "id": "l66egbjmhigkxgrnke6",
+          "title": "Andromeda Galaxy",
+          "comment": "This image is from NASA Galaxy Evolution Explorer is an observation of the large galaxy in Andromeda, Messier 31. The Andromeda galaxy is the most massive in the local group of galaxies that includes our Milky Way.",
+          "imgLoRes": "PIA04921~small.jpg",
+          "imgHiRes": "PIA04921~orig.jpg"
+        },
+        {
+          "id": "l66egbjmgt5h5e74ehp",
+          "title": "Eyes in the Sky",
+          "comment": "NASA Hubble and Spitzer telescopes combined to make these shape-shifting galaxies taking on the form of a giant mask. The icy blue eyes are actually the cores of two merging galaxies, called NGC 2207 and IC 2163, and the mask is their spiral arms.",
+          "imgLoRes": "PIA08097~small.jpg",
+          "imgHiRes": "PIA08097~orig.jpg"
+        },
+        {
+          "id": "l66egbjmxntzck54y19",
+          "title": "Hubble Spies Spectacular Sombrero",
+          "comment": "Lying at the southern edge of the rich Virgo cluster of galaxies, Messier 104, also called the Sombrero galaxy, is one of the most famous objects in the sky in this image from NASA Hubble Space Telescope.",
+          "imgLoRes": "PIA15226~small.jpg",
+          "imgHiRes": "PIA15226~orig.jpg"
+        }
+      ]
+    },
+    {
+      "id": "l66egbjmt1gw2516bcg",
+      "title": "Nebulas",
+      "comment": "Image that a cloud of gas could be this beautiful",
+      "path": "app-data/library/pictures/nebulas",
+      "headerImage": "app-data/library/pictures/album-header/GSFC_20171208_Archive_e000383~small.jpg",
+      "pictures": [
+        {
+          "id": "l66egbjmab71gvkdo2b",
+          "title": "History of Hubble Space Telescope (HST)",
+          "comment": "This is a color Hubble Space Telescope (HST) heritage image of supernova remnant N49, a neighboring galaxy, Ïthat was taken with Hubble's Wide Field Planetary Camera 2. ",
+          "imgLoRes": "0301627~small.jpg",
+          "imgHiRes": "0301627~orig.jpg"
+        },
+        {
+          "id": "l66egbjm67neum5kabf",
+          "title": "Hubble Peers into the Storm",
+          "comment": "Backlit wisps along the Horsehead Nebula upper ridge are being illuminated by Sigma Orionis, a young five-star system just off the top of this image from the Hubble Space Telescope.",
+          "imgLoRes": "GSFC_20171208_Archive_e000226~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000226~orig.jpg"
+        },
+        {
+          "id": "l66egbjm3s03hycebc9",
+          "title": "Hubble Sees a Star ‘Inflating’ a Giant Bubble",
+          "comment": "For the 26th birthday of NASA’s Hubble Space Telescope, astronomers are highlighting a Hubble image of an enormous bubble being blown into space by a super-hot, massive star.",
+          "imgLoRes": "GSFC_20171208_Archive_e000383~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000383~orig.jpg"
+        },
+        {
+          "id": "l66egbjmxz2jjwizx6r",
+          "title": "Hubble Finds a Little Gem",
+          "comment": "This colorful bubble is a planetary nebula called NGC 6818, also known as the Little Gem Nebula. It is located in the constellation of Sagittarius (The Archer), roughly 6,000 light-years away from us. ",
+          "imgLoRes": "GSFC_20171208_Archive_e000657~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000657~orig.jpg"
+        },
+        {
+          "id": "l66egbjmw1i94cgn33g",
+          "title": "Hubble Captures Cosmic Ice Sculptures",
+          "comment": "NASA image release September 16, 2010 Enjoying a frozen treat on a hot summer day can leave a sticky mess as it melts in the Sun and deforms. In the cold vacuum of space, there is no edible ice cream, but there is radiation from massive stars that is carving away at cold molecular clouds, creating bizarre, fantasy-like structures. ",
+          "imgLoRes": "GSFC_20171208_Archive_e001963~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e001963~orig.jpg"
+        },
+        {
+          "id": "l66egbjmnkwqm7tkust",
+          "title": "Hubble Captures View of Mystic Mountain",
+          "comment": "NASA Hubble Space Telescope captures the chaotic activity atop a three-light-year-tall pillar of gas and dust that is being eaten away by the brilliant light from nearby bright stars in a tempestuous stellar nursery called the Carina Nebula.",
+          "imgLoRes": "PIA15985~small.jpg",
+          "imgHiRes": "PIA15985~orig.jpg"
+        }
+      ]
+    },
+    {
+      "id": "l66egbjmbstj6utbheg",
+      "title": "Newborn stars",
+      "comment": "A star is born",
+      "path": "app-data/library/pictures/newborn-stars",
+      "headerImage": "app-data/library/pictures/album-header/A Galactic Spectacle_4862916839_o~small.jpg",
+      "pictures": [
+        {
+          "id": "l66egbjm4yzk76pnub6",
+          "title": "A Galactic Spectacle",
+          "comment": "NASA image release August 5, 2010 A beautiful new image of two colliding galaxies has been released by NASA's Great Observatories.",
+          "imgLoRes": "A Galactic Spectacle_4862916839_o~orig.jpg",
+          "imgHiRes": "A Galactic Spectacle_4862916839_o~orig.jpg"
+        },
+        {
+          "id": "l66egbjmvsnmhohob3j",
+          "title": "Hubble reveals heart of Lagoon Nebula",
+          "comment": "A spectacular new NASA/ESA Hubble Space Telescope image reveals the heart of the Lagoon Nebula. Seen as a massive cloud of glowing dust and gas, bombarded by the energetic radiation of new stars, this placid name hides a dramatic reality.",
+          "imgLoRes": "GSFC_20171208_Archive_e001955~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e001955~orig.jpg"
+        },
+        {
+          "id": "l66egbjmenpj3lh9khn",
+          "title": "Stellar Snowflake Cluster",
+          "comment": "Newborn stars, hidden behind thick dust, are revealed in this image of a section of the Christmas Tree cluster from NASA Spitzer Space Telescope, created in joint effort between Spitzer infrared array camera and multiband imaging photometer instrument.",
+          "imgLoRes": "PIA03244~small.jpg",
+          "imgHiRes": "PIA03244~orig.jpg"
+        },
+        {
+          "id": "l66egbjmghi4xv496sj",
+          "title": "Hubble Sees a Horsehead of a Different Color",
+          "comment": "Backlit wisps along the Horsehead Nebula upper ridge are being illuminated by Sigma Orionis, a young five-star system just off the top of this image from the Hubble Space Telescope.",
+          "imgLoRes": "PIA16008~small.jpg",
+          "imgHiRes": "PIA16008~orig.jpg"
+        },
+        {
+          "id": "l66egbjm3x5uqvtu27r",
+          "title": "Hubble Sees the Force Awakening in a Newborn Star",
+          "comment": "In the center of this image from the Hubble Space Telescope, partially obscured by a dark cloud of dust, a newborn star shoots twin jets out into space as a sort of birth announcement to the universe.",
+          "imgLoRes": "PIA16022~small.jpg",
+          "imgHiRes": "PIA16022~orig.jpg"
+        }
+      ]
+    },
+    {
+      "id": "l66egbjmyvzemhewbmk",
+      "title": "Planets",
+      "comment": "Checkout some amazing pictures of our neighbours",
+      "path": "app-data/library/pictures/planets",
+      "headerImage": "app-data/library/pictures/album-header/hubble-captures-vivid-auroras-in-jupiters-atmosphere_28000029525_o~small.jpg",
+      "pictures": [
+        {
+          "id": "l66egbjm1661mebwfct",
+          "title": "Hubble Takes Mars Portrait Near Close Approach",
+          "comment": "Mars is looking mighty fine in this portrait nabbed by the Hubble Space Telescope on a near close approach. The Hubble Space Telescope is more well known for its picturesque views of nebulae and galaxies, but it's also useful for studying our own planets, including Mars.",
+          "imgLoRes": "GSFC_20171208_Archive_e000332~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000332~orig.jpg"
+        },
+        {
+          "id": "l66egbjmhubd033x6fd",
+          "title": "Hubble Captures Vivid Auroras in Jupiter’s Atmosphere",
+          "comment": "Astronomers are using the NASA/ESA Hubble Space Telescope to study auroras — stunning light shows in a planet’s atmosphere — on the poles of the largest planet in the solar system, Jupiter. ",
+          "imgLoRes": "hubble-captures-vivid-auroras-in-jupiters-atmosphere_28000029525_o~small.jpg",
+          "imgHiRes": "hubble-captures-vivid-auroras-in-jupiters-atmosphere_28000029525_o~orig.jpg"
+        },
+        {
+          "id": "l66egbjmvwseqes9wve",
+          "title": "Hubble Takes Mars Portrait Near Close Approach",
+          "comment": "Mars is looking mighty fine in this portrait nabbed by the Hubble Space Telescope on a near close approach. The Hubble Space Telescope is more well known for its picturesque views of nebulae and galaxies, but it's also useful for studying our own planets, including Mars.",
+          "imgLoRes": "GSFC_20171208_Archive_e000332~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e000332~orig.jpg"
+        },
+        {
+          "id": "l66egbjmidiz73a8bqf",
+          "title": "Hubble Observes a New Saturn Storm",
+          "comment": "Hubble Observes a New Saturn Storm",
+          "imgLoRes": "PIA05982~small.jpg",
+          "imgHiRes": "PIA05982~orig.jpg"
+        }
+      ]
+    },
+    {
+      "id": "l66egbjmtxa38cy8t47",
+      "title": "Hubble telescope",
+      "comment": "All the pictures were taken by this amazing telescope",
+      "path": "app-data/library/pictures/hubble-telescope",
+      "headerImage": "app-data/library/pictures/album-header/GSFC_20171208_Archive_e002151~small.jpg",
+      "pictures": [
+        {
+          "id": "l66egbjmvcw58p2zvob",
+          "title": "History of Hubble Space Telescope (HST)",
+          "comment": "Ready for transportation to the Kennedy Space Center, the Hubble Space Telescope (HST) is pictured onboard the strongback dolly at the Vertical Processing Facility (VPF) at the Lockheed assembly plant upon completion of final testing and verification.",
+          "imgLoRes": "8913467~small.jpg",
+          "imgHiRes": "8913467~orig.jpg"
+        },
+        {
+          "title": "History of Hubble Space Telescope (HST)",
+          "comment": "The Hubble Space Telescope (HST) pictured in the Vertical Processing Facility (VPF) support fixture during final testing and verification at the Lockheed assembly plant.",
+          "imgLoRes": "8913468~small.jpg",
+          "imgHiRes": "8913468~orig.jpg"
+        },
+        {
+          "id": "l66egbjmgccnsqrys2v",
+          "title": "Hubble Space Telescope",
+          "comment": "The Hubble Space Telescope in a picture snapped by a Servicing Mission 4 crewmember just after the Space Shuttle Atlantis captured Hubble with its robotic arm on May 13, 2009, beginning the mission to upgrade and repair the telescope. ",
+          "imgLoRes": "GSFC_20171208_Archive_e002151~small.jpg",
+          "imgHiRes": "GSFC_20171208_Archive_e002151~orig.jpg"
+        },
+        {
+          "id": "l66egbjmlw7k39yy80d",
+          "title": "Making Room for Hubble's New Camera",
+          "comment": "Astronaut Jeffrey Hoffman removes the Wide Field and Planetary Camera 1 (WFPC 1) during the first Hubble servicing mission (SM1), which took place in December, 1993",
+          "imgLoRes": "PIA22574~small.jpg",
+          "imgHiRes": "PIA22574~orig.jpg"
+        }
+      ]
+    }
+  ]
+}
