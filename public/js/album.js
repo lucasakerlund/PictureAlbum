@@ -100,4 +100,5 @@ clearPresentation = () => {
     presentationButton.style.visibility = 'hidden';
     document.querySelectorAll('.image-container.selected').forEach(element => element.classList.toggle('selected', false));
     pictures = [];
+    selectedPictures = [];
 }
