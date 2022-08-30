@@ -103,10 +103,11 @@
         visibility: hidden;
         flex-direction: column;
         align-items: center;
-        padding-top: 40px;
+        padding-top: auto;
+        padding: 20px 0;
         width: 100vw;
         top: 80px;
-        height: 0vh;
+        min-height: 150px;
         background-color: #121213f8;
         border-bottom: 1px solid white;
     }
