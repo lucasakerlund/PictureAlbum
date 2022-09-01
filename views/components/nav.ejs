@@ -20,27 +20,65 @@
 <div class="upload-window">
     <div class="upload-content">
         <form class="form" action="/picture/upload" method="POST" enctype='multipart/form-data'>
-            <label for="title">Titel</label>
-            <input type="text" id="title" name="title" required>
-            <label for="description">Beskrivning</label>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            <label for="title" id="title">Titel</label>
+            <input type="text" id="title-input" name="title" required>
+            <label for="description" id="description">Beskrivning</label>
+            <textarea name="description" id="description-input" cols="30" rows="10"></textarea>
             <div class="upload-container">
                 <div class="upload-item" id="image-item-low">
                     <p class="image-type">Låg upplösning</p>
-                    <label class="custom-image-input" for="image-input-low" required><img src="/upload-image.svg" alt=""><p>Välj bild</p></label>
-                    <input type="file" name="image-low" id="image-input-low" required>
+                    <label class="custom-image-input" for="image-input-low" required>
+                        <img src="/upload-image.svg" alt="">
+                        <p>Välj bild</p>
+                        <input type="file" name="image-low" id="image-input-low" accept="image/png, image/jpeg" required>
+                    </label>
                     <p class="upload-image-text">Ingen fil har valts</p>
                 </div>
                 <div class="upload-item" id="image-item-high">
                     <p class="image-type">Hög upplösning</p>
-                    <label class="custom-image-input" for="image-input-high" required><img src="/upload-image.svg" alt=""><p>Välj bild</p></label>
-                    <input type="file" name="image-high" id="image-input-high" required>
+                    <label class="custom-image-input" for="image-input-high" required>
+                        <img src="/upload-image.svg" alt="">
+                        <p>Välj bild</p>
+                        <input type="file" name="image-high" id="image-input-high" required>
+                    </label>
                     <p class="upload-image-text">Ingen fil har valts</p>
                 </div>
             </div>
+            <div class="rating">
+                <input type="radio" name="rating" value="5" id="five" required>
+                <label for="five">
+                    <svg class="star">
+                        <use href="#star">
+                    </svg>
+                </label>
+                <input type="radio" name="rating" value="4" id="four">
+                <label for="four">
+                    <svg class="star">
+                        <use href="#star">
+                    </svg>
+                </label>
+                <input type="radio" name="rating" value="3" id="three">
+                <label for="three">
+                    <svg class="star">
+                        <use href="#star">
+                    </svg>
+                </label>
+                <input type="radio" name="rating" value="2" id="two">
+                <label for="two">
+                    <svg class="star">
+                        <use href="#star">
+                    </svg>
+                </label>
+                <input type="radio" name="rating" value="1" id="one">
+                <label for="one">
+                    <svg class="star">
+                        <use href="#star">
+                    </svg>
+                </label>
+            </div>
             <div class="custom-select">
                 <p>Välj albums</p>
-                <select name="albums" multiple>
+                <select name="albums" multiple required>
                 </select>
             </div>
             <input type="submit" id="submit-button" value="Ladda upp">
@@ -49,6 +87,19 @@
             <img src="/image-preview.svg" alt="">
         </div>
     </div>
+</div>
+
+<div class="star-source" style="display: none">
+    <svg>
+        <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+           <stop stop-color="#bf209f" offset="0%"></stop>
+           <stop stop-color="#d62a9d" offset="60%"></stop>
+           <stop stop-color="#ED009E" offset="100%"></stop>
+       </linearGradient>
+   <symbol id="star" viewBox="153 89 106 108">   
+     <polygon id="star-shape" stroke="url(#grad)" stroke-width="5" fill="currentColor" points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085"></polygon>
+   </symbol>
+</svg>
 </div>
 
 <script src="/js/nav.js"></script>
