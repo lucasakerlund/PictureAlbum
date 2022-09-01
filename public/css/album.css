@@ -12,11 +12,11 @@ body {
 }
 
 .content {
-    flex: 1; /*Makes the content fill the remaining height*/
+    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
     position: absolute;
     top: 80px;
     width: 100%;
-    height: calc(100% - 80px);
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -26,6 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background: rgba(0,0,0,0.3);
+    height: 80px;
     min-height: 80px;
     width: 100%;
     z-index: 0;
@@ -35,11 +36,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
     position: relative;
     left: 30px;
-    text-decoration: none;
-    color: black;
     height: 100%;
     padding: 0 20px;
 }
@@ -122,6 +120,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .image-container {
     background: rgb(172, 172, 172);
     width: 200px;
@@ -149,36 +148,77 @@ body {
 }
 
 /* Presentation */
-.presentation-content {
+.presentation-container {
     visibility: hidden;
     position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #121213d2;
+    z-index: 999;
+}
+
+.presentation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(112, 204, 70, 0.3);
+    min-height: 50px;
+    width: 100%;
+    z-index: 0;
+}
+
+.presentation-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 30px;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.presentation-close img {
+    width: 60px;
+    height: auto;
+}
+
+.presentation-title {
+    position: absolute;
+    left: 50%;
+    max-width: 500px;
+    transform: translate(-50%, 0); /*Moving the title to the center*/
+    font-size: 2rem;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.presentation-tools {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+    height: 100%;
+    width: auto;
+}
+
+.presentation-content {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
-    background-color: #121213d2;
-}
-
-.presentation-close {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    height: 70px;
-    width: 70px;
-    border-radius: 100%;
-    overflow: hidden;
+    margin: 10px 0;
 }
 
 .presentation-close:hover {
     cursor: pointer;
     background-color: rgba(141, 141, 141, .2);
-}
-
-.presentation-close img {
-    height: 100%;
-    width: 100%;
 }
 
 .presentation-previous, .presentation-next {
@@ -205,10 +245,6 @@ body {
 .presentation-previous:hover, .presentation-next:hover {
     cursor: pointer;
     background-color: rgba(141, 141, 141, .2);
-}
-
-.presentation-image-container {
-    z-index: -1;
 }
 
 .presentation-image-container img {

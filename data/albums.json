@@ -4,7 +4,11 @@
     "title": "Album1",
     "description": "Detta är en beskrivning",
     "image": "PIA16008~small.jpg",
-    "picture_ids": ["l66egbjmdy9wsosa5wu", "12343", "523523"]
+    "picture_ids": [
+      "l66egbjmdy9wsosa5wu",
+      "12343",
+      "523523"
+    ]
   },
   {
     "id": "123",

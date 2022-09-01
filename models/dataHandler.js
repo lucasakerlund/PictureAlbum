@@ -1,4 +1,7 @@
+"use strict";
+
 const fs = require('fs');
+const crypto = require('crypto');
 
 const albumsFile = './data/albums.json';
 const picturesFile = './data/pictures.json';
@@ -6,9 +9,9 @@ const picturesFile = './data/pictures.json';
 const getAlbums = (callback) => {
     fs.readFile(albumsFile, (err, data) => {
         if(err){
-            callback(err, {});
+            callback(err, []);
         }else {
-            list = JSON.parse(data);
+            let list = JSON.parse(data);
             callback(err, list);
         }
     });
@@ -76,9 +79,62 @@ const getPicturesFromIds = (pictureIds, callback) => {
     });
 }
 
+const uploadPicture = (title, comment, imgLoRes, imgHiRes, albumIds, callback) => {
+    fs.readFile(picturesFile, (err, data) => {
+        if(err){
+            console.log(err);
+            return false;
+        }
+        let list = JSON.parse(data);
+        const pictureId = crypto.randomUUID();
+        list.push({
+            "id": pictureId,
+            title,
+            comment,
+            imgLoRes,
+            imgHiRes
+        });
+        fs.writeFile(picturesFile, JSON.stringify(list), (err) => {
+            if(err) {
+                console.log(err);
+                return false;
+            }
+        });
+
+        fs.readFile(albumsFile, (err, data) => {
+            if(err){
+                console.log(err);
+                return false;
+            }
+            let albums = JSON.parse(data);
+            //Adding picutreId to all albums
+            if(Array.isArray(albumIds)){
+                albums.forEach(album => {
+                    albumIds.forEach(id => {
+                        if(album.id == id){
+                            album.picture_ids.push(pictureId);
+                        }
+                    });
+                });
+            }else {
+                albums.filter(album => album.id == albumIds)[0].picture_ids.push(pictureId);
+            }
+            //
+            fs.writeFile(albumsFile, JSON.stringify(albums), (err) => {
+                if(err){
+                    console.log(err);
+                    return false;
+                }
+                return true;
+            });
+        });
+    });
+}
+
 module.exports = {
     getAlbums,
     getAlbum,
     getPicture,
-    getPicturesFromIds
+    getPicturesFromIds,
+    uploadPicture,
 }

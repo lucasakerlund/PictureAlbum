@@ -92,9 +92,11 @@
     @keyframes nav-animation {
         from{
             height: 0vh;
+            min-height: 0;
         }
         to {
             height: 20vh;
+            min-height: 150px;
         }
     }
     .navbar-menu {
@@ -107,7 +109,6 @@
         padding: 20px 0;
         width: 100vw;
         top: 80px;
-        min-height: 150px;
         background-color: #121213f8;
         border-bottom: 1px solid white;
     }
@@ -116,6 +117,7 @@
         display: flex;
         visibility: visible;
         height: 20vh;
+        min-height: 150px;
         animation-name: nav-animation;
         animation-duration: .2s;
     }
