@@ -108,7 +108,7 @@ const showImage = index => {
 
 
 
-closePresentation = () => {
+const closePresentation = () => {
     presentation.style.visibility = 'hidden';
 }
 

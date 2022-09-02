@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btn{
+    margin-bottom: 100px;
+    margin-left: 2em;
+}
+
+.popup{
+    position: relative;
+    visibility: hidden;
+}
+
+.rectangle{
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    left: -240px;
+    background-color: red;
+    border-radius: 2%;
+}
+
+.rectangle{
+    display: flex;
+    flex-direction: column;
+}
+
+.rectangle h1{
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+
+.highRes:visited{
+    color: white;
+    text-decoration: none;
+    width: 60%;
+    text-align: center;
+    width: 100%;
+}
+
+.highRes:visited h2{
+    text-align: center;
+}
+
+.lowRes:visited{
+    color: white;
+    text-decoration: none;
+    width: 60%;
+    text-align: center;
+
+}
+
+.highRes{
+    color: white;
+    text-decoration: none;
+    width: 60%;
+    text-align: center;
+
+}
+
+.lowRes{
+    color: white;
+    text-decoration: none;
+    width: 60%;
+    text-align: center;
+
+}
+
+.triangle{
+    position: absolute;
+    bottom: -25px;
+    left: 175px;
+    transform: rotate(45deg);
+    width: 30px;
+    height: 30px;
+    background-color: red;
+}
+
+@keyframes moveR{
+    from{
+        height: 0px;
+        left: -60px;
+    }
+    to{
+        height: 200px;
+        left: -240px;
+    }
+}   
+
+@keyframes moveT {
+    from{
+        opacity: 0;
+        bottom: -50px;
+    }
+    to{
+        opacity: 100;
+        bottom: -25px;
+    }
+}
+.popup-toggle{
+    visibility: visible;
+}
+
+.popup-toggle .rectangle{
+    animation-name: moveR;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+}
+
+.popup-toggle .triangle{
+    animation-name: moveT;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}

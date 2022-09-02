@@ -195,7 +195,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background: rgba(112, 204, 70, 0.3);
-    min-height: 50px;
+    min-height: 80px;
     width: 100%;
     z-index: 0;
 }
@@ -235,6 +235,22 @@ body {
     margin-right: 50px;
     height: 100%;
     width: auto;
+}
+
+.presentation-tools > ul{
+    display: flex;
+    gap: 10px;
+}
+
+.presentation-tools ul li{
+    list-style-type: none;
+    font-size: 30px;
+    color: white;
+}
+
+.presentation-tools ul li a:visited, a{
+    text-decoration: none;
+    color: white;
 }
 
 .presentation-content {
