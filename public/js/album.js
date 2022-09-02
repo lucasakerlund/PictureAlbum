@@ -1,7 +1,10 @@
+"use strict";
+
 let pictures;
 let selectedPictures = [];
 const closebutton = document.querySelector('.presentation-close');
-const presentation = document.querySelector('.presentation-content');
+const presentationTitle = document.querySelector('.presentation-title');
+const presentation = document.querySelector('.presentation-container');
 const presentationPicture = document.querySelector('.presentation-image-container img');
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
@@ -78,11 +81,12 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-showImage = index => {
+const showImage = index => {
     console.log('index ' + index);
     console.log(pictures);
     presentationPicture.src = ''; //needs to be reset inorder to avoid showing the previous image upon loading the new image
-    presentationPicture.src = '../' + pictures[index].imgHiRes
+    presentationPicture.src = '../' + pictures[index].imgHiRes;
+    presentationTitle.innerHTML = pictures[index].title;
     presentation.style.visibility = 'visible';
     console.log(presentationPicture.imgHiRes)
 
@@ -108,8 +112,9 @@ closePresentation = () => {
     presentation.style.visibility = 'hidden';
 }
 
-clearPresentation = () => {
+const clearPresentation = () => {
     presentationButton.style.visibility = 'hidden';
     document.querySelectorAll('.image-container.selected').forEach(element => element.classList.toggle('selected', false));
     pictures = [];
+    selectedPictures = [];
 }
