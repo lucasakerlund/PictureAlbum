@@ -13,6 +13,12 @@ closebutton.addEventListener('click', e => {
     closePresentation();
 });
 
+window.addEventListener('keydown', e =>{ 
+    if (e.key == "Escape") {
+        closePresentation()
+    }
+})
+
 document.addEventListener('click', e => {
     if(e.target.className == 'image'){
         if(e.ctrlKey){
@@ -78,6 +84,10 @@ showImage = index => {
     presentationPicture.src = ''; //needs to be reset inorder to avoid showing the previous image upon loading the new image
     presentationPicture.src = '../' + pictures[index].imgHiRes
     presentation.style.visibility = 'visible';
+    console.log(presentationPicture.imgHiRes)
+
+    console.log('PictureAlbum/data/pictures/' + pictures[index].imgHiRes)
+    
     
     if(index > 0) {
         previousButton.style.visibility = 'inherit';
@@ -91,6 +101,8 @@ showImage = index => {
         nextButton.style.visibility = 'hidden';
     }
 }
+
+
 
 closePresentation = () => {
     presentation.style.visibility = 'hidden';

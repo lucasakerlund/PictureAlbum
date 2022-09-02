@@ -121,8 +121,23 @@ body {
     width: 200px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    
 }
+
+
+.image-container .rating{
+    display: flex;
+    justify-content: space-around;
+    visibility: hidden;
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    margin-left: 10px;
+}
+
+
 .image-container {
+    position: relative;
     background: rgb(172, 172, 172);
     width: 200px;
     height: 200px;
@@ -131,6 +146,10 @@ body {
     box-shadow: 1px 1px 2px black;
     margin-top: 5px;
     box-sizing: border-box;
+}
+
+.image-container img[icon]{ /*star icons for rating */
+    width: 15%;
 }
 
 .image-container img {
@@ -144,8 +163,21 @@ body {
     transition: box-shadow .1s;
 }
 
+.image-container:hover > .rating{ /*new changes erkan*/
+    visibility: visible;
+}
+
+
 .image-container.selected {
     border: 3px solid blue;
+}
+
+.image-container.selected .rating{
+    visibility: visible;
+}
+
+.image-container.selected > .rating{ /*new erkan*/
+    visibility: visible;
 }
 
 /* Presentation */
