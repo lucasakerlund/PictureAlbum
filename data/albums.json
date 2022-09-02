@@ -1,1 +1,22 @@
-[{"id":"test","title":"Album1","description":"Detta är en beskrivning","image":"PIA16008~small.jpg","picture_ids":["l66egbjmdy9wsosa5wu","12343","523523","235dcdf1-3b03-4c7b-b734-98bc847977aa","b55397a1-b761-4d11-aefe-ee07c36e5426","619a5d00-349f-49ed-b5e2-8ab131d951f5"]},{"id":"123","title":"Album2","description":"Detta är en beskrivning","image":"PIA03244~small.jpg","picture_ids":["l66egbjmdy9wsosa5wu"]}]
+[
+    {
+        "id": "test",
+        "title": "Album1",
+        "description": "Detta är en beskrivning",
+        "image": "PIA16008~small.jpg",
+        "picture_ids": [
+            "l66egbjmdy9wsosa5wu",
+            "12343",
+            "523523"
+        ]
+    },
+    {
+        "id": "123",
+        "title": "Album2",
+        "description": "Detta är en beskrivning",
+        "image": "PIA03244~small.jpg",
+        "picture_ids": [
+            "l66egbjmdy9wsosa5wu"
+        ]
+    }
+]
