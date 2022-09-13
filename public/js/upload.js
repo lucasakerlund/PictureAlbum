@@ -8,6 +8,12 @@ const imageItemHigh = document.getElementById('image-item-high');
 
 const select = document.querySelector('.custom-select select');
 
+window.addEventListener('click', e => {
+    if(!e.target.closest('.upload-window') && e.target.className != "navbar-upload"){
+        document.querySelector('.upload-window').classList.toggle('active', false);
+    }
+});
+
 imageInputLow.addEventListener('change', () => {
     handleImageSelector(imageItemLow);
 }, false);
@@ -31,6 +37,13 @@ const handleImageSelector = (imageItem) => {
     }
 
     let file = imageInput.files[0];
+
+    if(!(file.type == "image/png" || file.type == "image/jpeg")){
+        alert("Only .png and .jpeg allowed.");
+        imageInput.value = null;
+        return;
+    }
+
     imageItem.querySelector('.upload-image-text').innerHTML = file.name;
 
     uploadButton.classList.toggle('uploaded', true);

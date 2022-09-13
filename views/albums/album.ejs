@@ -20,6 +20,11 @@
                 <div class="picture-container">
                     <p><%= picture.title %></p>
                     <div class="image-container">
+                        <div class="rating">
+                            <% for( let index = 0; index < picture.rating; index++ ) { %>
+                                <img icon src="/star-icon.svg">
+                            <% } %>
+                        </div>
                         <% if (picture.imgLoRes) { %>
                             <img class="image" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
                         <% } %>

@@ -81,7 +81,7 @@ const getPicturesFromIds = (pictureIds, callback) => {
     });
 }
 
-const uploadPicture = (title, comment, imgLoRes, imgHiRes, albumIds, callback) => {
+const uploadPicture = (title, comment, imgLoRes, imgHiRes, rating, albumIds, callback) => {
     fs.readFile(picturesFile, (err, data) => {
         if(err){
             console.log(err);
@@ -94,7 +94,8 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, albumIds, callback) =
             title,
             comment,
             imgLoRes,
-            imgHiRes
+            imgHiRes,
+            rating
         });
         fs.writeFile(picturesFile, JSON.stringify(list), (err) => {
             if(err) {

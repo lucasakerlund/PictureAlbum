@@ -21,6 +21,12 @@ closebutton.addEventListener('click', e => {
     closePresentation();
 });
 
+window.addEventListener('keydown', e =>{ 
+    if (e.key == "Escape") {
+        closePresentation()
+    }
+})
+
 document.addEventListener('click', e => {
     if(e.target.className == 'image'){
         if(e.ctrlKey){
@@ -89,6 +95,10 @@ const showImage = index => {
     presentationTitle.innerHTML = pictures[index].title;
     comment.innerHTML = pictures[index].comment;
     presentation.style.visibility = 'visible';
+    console.log(presentationPicture.imgHiRes)
+
+    console.log('PictureAlbum/data/pictures/' + pictures[index].imgHiRes)
+    
     
     if(index > 0) {
         previousButton.style.visibility = 'inherit';
@@ -102,6 +112,8 @@ const showImage = index => {
         nextButton.style.visibility = 'hidden';
     }
 }
+
+
 
 const closePresentation = () => {
     presentation.style.visibility = 'hidden';
