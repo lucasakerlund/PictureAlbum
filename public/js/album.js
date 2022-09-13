@@ -9,6 +9,11 @@ const presentationPicture = document.querySelector('.presentation-image-containe
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
 const presentationButton = document.querySelector('.presentation-button');
+const commentIcon = document.querySelector(".image-comment-icon");
+const editIcon = document.querySelector(".edit-icon");
+const showImageText = document.querySelector(".image-text-box");
+const comment = document.querySelector(".image-text");
+const save = document.querySelector(".save-box");
 
 let index = 0;
 
@@ -29,6 +34,7 @@ document.addEventListener('click', e => {
                 presentationButton.style.visibility = 'inherit';
             }else {
                 presentationButton.style.visibility = 'hidden';
+            
             }
             return;
         }
@@ -81,6 +87,7 @@ const showImage = index => {
     presentationPicture.src = ''; //needs to be reset inorder to avoid showing the previous image upon loading the new image
     presentationPicture.src = '../' + pictures[index].imgHiRes;
     presentationTitle.innerHTML = pictures[index].title;
+    comment.innerHTML = pictures[index].comment;
     presentation.style.visibility = 'visible';
     
     if(index > 0) {
@@ -106,3 +113,81 @@ const clearPresentation = () => {
     pictures = [];
     selectedPictures = [];
 }
+
+/**Text-box for image is hidden when clicking outside the box */
+document.addEventListener('click', hideBox );
+
+commentIcon.addEventListener('click', (e) => {
+    if(showImageText.classList.toggle('active')){
+        e.stopPropagation();
+        comment.disabled = 'true';
+        presentationPicture.style.opacity = 0.65;
+    }else{
+        currentComment();
+        presentationPicture.style.opacity = 1;
+    }
+})
+
+function hideBox(e) {
+    if(!showImageText.contains(e.target)) {
+        showImageText.classList.remove('active');
+        presentationPicture.style.opacity = 1;
+    }
+}
+
+document.addEventListener('click', disableEdit);
+
+editIcon.addEventListener('click', (e) => {
+    if(showImageText.classList.toggle('active2')){
+        e.stopPropagation();
+        comment.disabled = false;
+        save.style.display = 'block';
+    } else {
+        save.style.display = 'none';
+        currentComment();
+        comment.disabled = true;
+    }
+})
+
+//When clicking on editIcon and changing text
+//when save button not pressed, show current text after clicking
+//either on comment button, document or editicon without save.
+
+save.addEventListener('click', () => {
+    const text = comment.value;
+    comment.disabled = true;
+    showImageText.classList.remove('active2');
+    save.style.display = 'none';
+    fetch('/albums/updateComment', {
+        method: 'PUT' ,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            id: pictures[index].id,
+            comment: text
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.err){
+            return;
+        }
+        pictures[index].comment = text;
+     
+    })
+})
+
+
+function disableEdit(e) {
+    if(!showImageText.contains(e.target)) {
+        showImageText.classList.remove('active2');
+        currentComment();
+        save.style.display = 'none';
+    }
+}
+
+function currentComment() {
+    comment.value = pictures[index].comment;
+}
+

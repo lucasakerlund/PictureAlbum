@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 const crypto = require('crypto');
+const path = require('path');
+const { json } = require('express');
 
 const albumsFile = './data/albums.json';
 const picturesFile = './data/pictures.json';
@@ -131,10 +133,35 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, albumIds, callback) =
     });
 }
 
+const updateComment = (pictureId, comment, callback) => {
+    fs.readFile(picturesFile, (err, data) => {
+        if(err){
+            callback("Could not retrieve pictures");
+            return;
+        }
+        let pictures = JSON.parse(data);
+        pictures.forEach(picture => {
+            if(picture.id == pictureId){
+                picture.comment = comment;
+                return;
+            }
+        });
+        fs.writeFile(picturesFile, JSON.stringify(pictures, null, 2), (err) => {
+            if(err){
+            callback("Could not save pictures");
+            return;
+            }
+            callback(false);
+        });
+    });
+}
+
+
 module.exports = {
     getAlbums,
     getAlbum,
     getPicture,
     getPicturesFromIds,
     uploadPicture,
+    updateComment
 }
