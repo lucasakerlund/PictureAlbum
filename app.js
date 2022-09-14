@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/albums', albumRoutes);
 app.use('/api', apiRoutes);
 
-app.post('/picture/upload', upload.fields([{ name : "image-low", maxCount: 1 }, { name : "image-high", maxCount: 1 }]), async (req, res) => {
+app.post('/picture/upload', upload.fields([{ name : "image-low", maxCount: 1 }, { name : "image-high", maxCount: 1 }]), (req, res) => {
     database.uploadPicture(req.body.title, req.body.description, req.files['image-low'][0].filename, req.files['image-high'][0].filename, req.body.rating, req.body.albums);
     res.redirect('/');
 });
