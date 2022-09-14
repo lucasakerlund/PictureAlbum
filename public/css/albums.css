@@ -43,7 +43,7 @@ body {
 }
 
 .image-container {
-    background: rgb(172, 172, 172);
+    background: rgba(24, 24, 24, 0.75);
     width: 200px;
     height: 200px;
     border-radius: 5px;
@@ -58,6 +58,10 @@ body {
     overflow: hidden;
     top: 0;
     right: 0;
+}
+
+.rating-album img {
+    object-fit: contain;
 }
 
 .image-container:hover {

@@ -8,10 +8,23 @@
     
     <div class="content">
         <div class="menu">
-            <a class="back" href="/albums"><img src="/left-arrow.svg" alt="back arrow"></a>
+            <div class="left">
+                <a class="back" href="/albums">
+                    <img src="/left-arrow.svg" alt="back arrow">
+                </a>
+            </div>
             <div class="title"><%= album.title %></div>
-            <div class="tools">
-                <div class="presentation-button">Presentation</div>
+            <div class="right">
+                <div class="tools">
+                    <div class="presentation-button selected">
+                        <p>Presentation</p>
+                        <img src="/presentation.svg" alt="open presentation">
+                    </div>
+                    <div class="remove-button selected">
+                        <p>Ta bort</p>
+                        <img src="/delete-button.svg" alt="delete selected pictures">
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -25,9 +38,7 @@
                                 <img icon src="/star-icon.svg">
                             <% } %>
                         </div>
-                        <% if (picture.imgLoRes) { %>
-                            <img class="image" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
-                        <% } %>
+                        <img class="image" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
                     </div>
                 </div>
             <% }) %>

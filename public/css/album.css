@@ -2,6 +2,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
+    min-width: 100%;
     height: 100vh;
     background: url('../background.jpg');
     backdrop-filter: blur(5px);
@@ -12,18 +13,16 @@ body {
 }
 
 .content {
-    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
-    position: absolute;
-    top: 80px;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: overlay;
+    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
 }
 
 .menu {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.3);
     height: 80px;
@@ -32,12 +31,32 @@ body {
     z-index: 0;
 }
 
-.back {
+.menu .left {
+    height: 100%;
+    flex: 1;
+}
+
+.title {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
+    
+    color: white;
+}
+
+.menu .right {
+    height: 100%;
+    flex: 1;
+}
+
+.back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     position: relative;
-    left: 30px;
+    width: 60px;
     height: 100%;
     padding: 0 20px;
 }
@@ -47,25 +66,18 @@ body {
     height: auto;
 }
 
-.title {
-    position: absolute;
-    font-size: 2rem;
-    color: white;
-    left: 50%;
-    transform: translate(-50%, 0); /*Moving the title to the center*/
-}
-
 .tools {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 30px;
     height: 100%;
     width: auto;
 }
 
 .tools div {
+    position: relative;
     display: flex;
     align-items: center;
     font-size: 1.5rem;
@@ -84,8 +96,16 @@ body {
     background: linear-gradient(to top, rgba(255, 255, 255, 0.14), transparent 100%);
 }
 
-.presentation-button {
-    visibility: hidden;
+.tools .selected {
+    display: none;
+}
+
+.tools img {
+    position: relative;
+    width: 15vw;
+    max-width: 60px;
+    max-height: 100%;
+    display: none;
 }
 
 .album-content {
@@ -95,7 +115,7 @@ body {
     flex-wrap: wrap;
     overflow-y: overlay;
     z-index: 0;
-    flex: 1;
+    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
 }
 
 .album-clickable {
@@ -136,7 +156,7 @@ body {
 
 .image-container {
     position: relative;
-    background: rgb(172, 172, 172);
+    background: rgba(24, 24, 24, 0.75);
     width: 200px;
     height: 200px;
     border-radius: 5px;
@@ -182,7 +202,7 @@ body {
 .presentation-container {
     visibility: hidden;
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -281,12 +301,14 @@ body {
     top: 50%;
     left: 0;
     transform: translate(0, -50%);
+    z-index: 998;
 }
 
 .presentation-next {
     top: 50%;
     right: 0;
     transform: translate(0, -50%);
+    z-index: 998;
 }
 
 .presentation-previous:hover, .presentation-next:hover {
@@ -303,5 +325,25 @@ body {
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+}
+
+@media (max-width: 850px) {
+
+    .tools {
+        margin-right: 0;
+    }
+
+    .tools div {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tools div p {
+        display: none;
+    }
+
+    .tools div img {
+        display: inherit;
+    }
+
 }

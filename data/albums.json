@@ -1,22 +1,30 @@
 [
-    {
-        "id": "test",
-        "title": "Album1",
-        "description": "Detta är en beskrivning",
-        "image": "PIA16008~small.jpg",
-        "picture_ids": [
-            "l66egbjmdy9wsosa5wu",
-            "12343",
-            "523523"
-        ]
-    },
-    {
-        "id": "123",
-        "title": "Album2",
-        "description": "Detta är en beskrivning",
-        "image": "PIA03244~small.jpg",
-        "picture_ids": [
-            "l66egbjmdy9wsosa5wu"
-        ]
-    }
+  {
+    "id": "test",
+    "title": "Album1",
+    "description": "Detta är en beskrivning",
+    "image": "PIA16008~small.jpg",
+    "picture_ids": [
+      "l66egbjmdy9wsosa5wu",
+      "12343",
+      "523523",
+      "8ddbd05c-6ae7-4fc9-a144-0fa9f6ab17d3",
+      "37616550-f6ab-4041-8cdd-c605f82d1373",
+      "609b235c-519a-4eda-b862-e61ece7036e9",
+      "ef060edb-38e3-47bc-8c72-0ae6d6f90dab",
+      "44c49905-88a2-41da-b26e-ccbfe3cab883",
+      "9a095d2c-ff3b-4b5f-ac4b-522df094b776",
+      "da141d7b-44d2-45c9-bb86-40f664a3eed3"
+    ]
+  },
+  {
+    "id": "123",
+    "title": "Album2",
+    "description": "Detta är en beskrivning",
+    "image": "PIA03244~small.jpg",
+    "picture_ids": [
+      "l66egbjmdy9wsosa5wu",
+      "609b235c-519a-4eda-b862-e61ece7036e9"
+    ]
+  }
 ]

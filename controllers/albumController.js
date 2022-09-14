@@ -5,7 +5,7 @@ const get_albums_index = (req, res) => {
         if(err) {
             console.log(err);
         }
-        res.render('albums/index', { title: 'Albums', albums});
+        res.render('albums/index', { title: 'Albums', albums, ratingAlbums: database.ratingAlbums});
     });
 }
 

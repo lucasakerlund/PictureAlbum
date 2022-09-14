@@ -6,6 +6,41 @@ const crypto = require('crypto');
 const albumsFile = './data/albums.json';
 const picturesFile = './data/pictures.json';
 
+const ratingAlbums = [
+    {
+        id: 'one-star',
+        title: 'One star ratings',
+        image: '1-star-rating-album.svg',
+        rating: 1
+    },
+    {
+        id: 'two-stars',
+        title: 'Two star ratings',
+        image: '2-star-rating-album.svg',
+        rating: 2
+    },
+    {
+        id: 'three-stars',
+        title: 'Three star ratings',
+        image: '3-star-rating-album.svg',
+        rating: 3
+    },
+    {
+        id: 'four-stars',
+        title: 'Four star ratings',
+        image: '4-star-rating-album.svg',
+        rating: 4
+    },
+    {
+        id: 'five-stars',
+        title: 'Five star ratings',
+        image: '5-star-rating-album.svg',
+        rating: 5
+    },
+]
+
+
+
 const getAlbums = (callback) => {
     fs.readFile(albumsFile, (err, data) => {
         if(err){
@@ -18,27 +53,48 @@ const getAlbums = (callback) => {
 };
 
 const getAlbum = (id, callback) => {
-    fs.readFile(albumsFile, (err, data) => {
-        if(err){
-            callback(err, {}, {});
-        }else {
+
+    const ratingAlbum = ratingAlbums.filter(album => album.id == id)[0];
+
+    if(typeof ratingAlbum !== 'undefined'){
+        fs.readFile(picturesFile, (err, data) => {
+            if(err){
+                callback('couldnt read pictures', ratingAlbum, {});
+                return;
+            }
             let list = JSON.parse(data);
-            let outputAlbum;
-            list.forEach(album => {
-                if(album.id == id){
-                    outputAlbum = album;
-                    return;
+            let outputPictures = [];
+            list.forEach(picture => {
+                if(picture.rating == ratingAlbum.rating){
+                    outputPictures.push(picture);
                 }
             });
-            if(typeof outputAlbum == 'undefined'){
-                callback('album not found', {}, {});
+            callback(false, ratingAlbum, outputPictures);
+        });
+        return;
+    }else {
+        fs.readFile(albumsFile, (err, data) => {
+            if(err){
+                callback(err, {}, {});
             }else {
-                getPicturesFromIds(outputAlbum.picture_ids, (err, pictures) => {
-                    callback(false, outputAlbum, pictures);
+                let list = JSON.parse(data);
+                let outputAlbum;
+                list.forEach(album => {
+                    if(album.id == id){
+                        outputAlbum = album;
+                        return;
+                    }
                 });
+                if(typeof outputAlbum == 'undefined'){
+                    callback('album not found', {}, {});
+                }else {
+                    getPicturesFromIds(outputAlbum.picture_ids, (err, pictures) => {
+                        callback(false, outputAlbum, pictures);
+                    });
+                }
             }
-        }
-    });
+        });
+    }
 };
 
 const getPicture = (id, callback) => {
@@ -133,6 +189,7 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, rating, albumIds, cal
 }
 
 module.exports = {
+    ratingAlbums,
     getAlbums,
     getAlbum,
     getPicture,

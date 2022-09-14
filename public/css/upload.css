@@ -5,17 +5,20 @@
     transform: translate(-50%, -50%);
     width: 60vw;
     height: 70vh;
+    min-height: 300px;
     background-color: rgba(24, 24, 24, 0.95);
     border: 3px solid rgba(15, 15, 15, 0.7);
     border-radius: 20px;
-    z-index: 998;
+    z-index: 999;
     transition: top .5s ease;
     overflow: hidden;
+    opacity: 0;
 }
 
 .upload-window.active {
     top: 50%;
     transition: top .5s ease;
+    opacity: 1;
 }
 
 .upload-content {
@@ -39,7 +42,7 @@
     height: 100%;
 }
 
-#title, #description {
+#title, #description, #rating-text {
     font-size: 1.5rem;
     color: white;
     margin: 20px 0 10px 0;
@@ -139,10 +142,19 @@ input[type="file"] {
 
 .custom-image-input:hover {
     background-color: rgba(218, 218, 218, 0.3);
+}
+
+#image-input-low:hover, #image-input-high:hover {
     cursor: pointer;
 }
 
 /*Rating*/
+
+input[name="rating"] {
+    position: absolute;
+    top: 90%;
+    opacity: 0;
+}
 
 svg {
     width: 100%;
@@ -165,12 +177,6 @@ svg {
     color: rgba(255, 255, 255, 0.219);
 }
 
-input[name="rating"] {
-    position: absolute;
-    top: 90%;
-    opacity: 0;
-}
-
 input[name="rating"]:checked ~ label .star {
     color: yellow;
 }
@@ -178,6 +184,7 @@ input[name="rating"]:checked ~ label .star {
 label:hover ~ label .star,
 label:hover .star {
     color: rgb(78, 78, 0);
+    cursor: pointer;
 }
 
 /*Select*/

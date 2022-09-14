@@ -9,6 +9,7 @@ const presentationPicture = document.querySelector('.presentation-image-containe
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
 const presentationButton = document.querySelector('.presentation-button');
+const selectButtons = document.querySelectorAll('.tools .selected'); //Buttons to appear when images are selected
 
 let index = 0;
 
@@ -32,19 +33,19 @@ document.addEventListener('click', e => {
                 selectedPictures = selectedPictures.filter(p => p.id != e.target.dataset.id);
             }
             if(selectedPictures.length > 0){
-                presentationButton.style.visibility = 'inherit';
+                selectButtons.forEach(button => button.style.display = 'inherit');
             }else {
-                presentationButton.style.visibility = 'hidden';
+                selectButtons.forEach(button => button.style.display = 'none');
             }
             return;
         }
-        clearPresentation();
+        clearSelectedPictures();
         pictures = allPictures;
         index = pictures.map(p => p.id).indexOf(e.target.dataset.id);
         showImage(index);
     }else{
         if(e.target.className == 'album-content'){
-            clearPresentation();
+            clearSelectedPictures();
         }
     }
 
@@ -112,8 +113,8 @@ const closePresentation = () => {
     presentation.style.visibility = 'hidden';
 }
 
-const clearPresentation = () => {
-    presentationButton.style.visibility = 'hidden';
+const clearSelectedPictures = () => {
+    selectButtons.forEach(button => button.style.display = 'none');
     document.querySelectorAll('.image-container.selected').forEach(element => element.classList.toggle('selected', false));
     pictures = [];
     selectedPictures = [];

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="151" 
+xmlns:xlink="http://www.w3.org/1999/xlink" height="140" visibility="hidden">
+<path id="s" fill="transparent" stroke="yellow" stroke-width="2"
+d="m8,22h18l5.5-17 5.5,17h18l-14.5,10.5 5.5
+17-14.5-10.5-14.5,10.5 5.5-17z"/>
+<use xlink:href="#s" x="44" visibility="visible"/>
+<use xlink:href="#s" x="88" y="40" visibility="visible"/>
+<use xlink:href="#s" y="40" visibility="visible"/>
+<use xlink:href="#s" x="44" y="80" visibility="visible"/>
+</svg>
