@@ -20,7 +20,14 @@ const get_album = (req, res) => {
     });
 }
 
+const update_comment = (req, res) => {
+    database.updateComment(req.body.id, req.body.comment, (err) => {
+        res.json({ err });
+    });
+}
+
 module.exports = {
     get_albums_index,
     get_album,
+    update_comment
 }

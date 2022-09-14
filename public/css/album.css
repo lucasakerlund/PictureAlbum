@@ -39,7 +39,7 @@ body {
 .title {
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: 2rem;
     
@@ -214,8 +214,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(112, 204, 70, 0.3);
-    min-height: 80px;
+    background: rgba(78, 118, 65, 0.3);
+    min-height: 50px;
     width: 100%;
     z-index: 0;
 }
@@ -255,24 +255,100 @@ body {
     margin-right: 50px;
     height: 100%;
     width: auto;
+    color: white;
+    font-size: 20px;
 }
 
-.presentation-tools > ul{
-    display: flex;
-    gap: 10px;
+.image-comment-icon {
+    margin-right: 30px;
+    padding: 7px;
 }
 
-.presentation-tools ul li{
-    list-style-type: none;
-    font-size: 30px;
+.image-comment-icon:hover {
+    cursor: pointer;
+    color: rgb(170, 170, 170);
+    text-decoration: underline;
+}
+
+.image-text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50vh;
+    width: 28vw;
+    animation: topAnimation 0.3s;
+    display: none;
+    z-index: 998;
+}
+
+.image-text-box.active{
+    display: block;
+}
+
+.image-text-box.active2 {
+    border: 3px white solid;
+    border-radius: 20px;
+}
+
+.image-text {
+    font: italic 1.2em "Fira Sans", serif;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    line-height: 30px;
+    resize: none;
+    background-color: rgb(24, 24, 24, 0.80);
+    outline: none;
+    border-radius: 20px;
     color: white;
 }
 
-.presentation-tools ul li a:visited, a{
-    text-decoration: none;
+.image-text-tools {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.edit-icon img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
     color: white;
 }
 
+.edit-icon:hover {
+    color: gray;
+}
+
+.save-box {
+    position: absolute;
+    width: 75px;
+    height: 40px;
+    background-color: rgba(155, 155, 155, 0.5);
+    bottom: 0;
+    left: 0;
+    color:white;
+    display: none;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.save-box:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+@keyframes topAnimation {
+    from {top: 40%;}
+    to {top: 50%;}
+}
 .presentation-content {
     position: relative;
     width: 100%;

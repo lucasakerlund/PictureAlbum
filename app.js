@@ -4,12 +4,15 @@ const apiRoutes = require('./routes/apiRoutes');
 const database = require('./models/dataHandler');
 const multer = require('multer');
 const upload = multer({ dest: 'data/pictures' });
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
 app.listen(5500);
+
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use(express.static('data/pictures'));
