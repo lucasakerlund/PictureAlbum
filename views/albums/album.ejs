@@ -2,6 +2,7 @@
 <html lang="en">
     <%- include('../components/head.ejs') %>
     <link rel="stylesheet" href="/css/album.css">
+    <link rel="stylesheet" href="/css/ä.css">
 <body>
     
     <%- include('../components/nav.ejs') %>
@@ -52,7 +53,13 @@
             </div>
             <div class="presentation-title">Titel</div>
             <div class="presentation-tools">
+<<<<<<< HEAD
+                <ul>
+                    <a class="downloadbtn" id="downloadbtnjs" style="font-size: 30px;" href="#">click me</a>
+                </ul>
+=======
                 <div class="image-comment-icon">Kommentar</div>
+>>>>>>> 61f05c8d1c06e3828cde4fb031d4bd895ac0d760
             </div>
         </div>
             <div class="image-text-box">
@@ -65,10 +72,23 @@
                 </div>
             </div>
         <div class="presentation-content">
+<<<<<<< HEAD
+            <div class="container">
+                <div class="popup" id="popup">
+                    <div class="rectangle">
+                        <h1 padding-title>download picture</h1>
+                        <a padding-link href="#" class="highRes"><h2>High-Res Picture</h2></a>
+                        <a padding-link href="#" class="lowRes"><h2>Low-Res Picture</h2></a>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+            </div>
+=======
 
+>>>>>>> 61f05c8d1c06e3828cde4fb031d4bd895ac0d760
             <div class="presentation-previous"><img src="/left-arrow.svg" alt=""></div>
             <div class="presentation-image-container">
-                <img src="" alt="">
+                <img style="width: 80%;" src="" alt="">
             </div>
             <div class="presentation-next"><img src="/right-arrow.svg" alt=""></div>
         </div>
@@ -79,6 +99,7 @@
         const allPictures = <%- JSON.stringify(pictures) %>;
     </script>
     <script src="/js/album.js"></script>
+    <script src="/js/å.js"></script>
 
 </body>
 </html>

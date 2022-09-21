@@ -9,6 +9,8 @@ const presentationPicture = document.querySelector('.presentation-image-containe
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
 const presentationButton = document.querySelector('.presentation-button');
+const downloadbutton = document.getElementById('downloadbtnjs');
+const downloadPanel = document.getElementById('popup');
 const commentIcon = document.querySelector(".image-comment-icon");
 const editIcon = document.querySelector(".edit-icon");
 const showImageText = document.querySelector(".image-text-box");
@@ -21,13 +23,25 @@ let index = 0;
 
 closebutton.addEventListener('click', e => {
     closePresentation();
+    
 });
 
 window.addEventListener('keydown', e =>{ 
-    if (e.key == "Escape") {
-        closePresentation()
+    if (e.key == 'Escape') {
+        if(downloadPanel.classList.length > 1 && presentation.style.visibility == 'visible'){
+            downloadbutton.click();
+            closePresentation();
+        }else if(downloadPanel.classList.length == 1 && presentation.style.visibility == 'visible'){
+            closePresentation();
+        }
     }
 })
+
+downloadbutton.addEventListener('click', e =>{
+    downloadPanel.classList.toggle('.popup-toggle')
+})
+
+
 
 document.addEventListener('click', e => {
     if(e.target.closest('.image-container')){
@@ -71,6 +85,7 @@ previousButton.addEventListener('click', e1 => {
 
 nextButton.addEventListener('click', e1 => {
     showImage(index+=1);
+    
 });
 
 window.addEventListener('keydown', (event) => {
@@ -162,8 +177,9 @@ commentIcon.addEventListener('click', (e) => {
 })
 
 function hideBox(e) {
-    if(!showImageText.contains(e.target)) {
+    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target)) {
         showImageText.classList.remove('active');
+        presentationTitle.classList.remove('active3');
         presentationPicture.style.opacity = 1;
     }
 }
@@ -180,16 +196,22 @@ editIcon.addEventListener('click', (e) => {
         currentComment();
         comment.disabled = true;
     }
+    if(presentationTitle.classList.toggle('active3')){
+        e.stopPropagation();
+        presentationTitle.contentEditable = 'true';
+    }else{
+        presentationTitle.contentEditable = 'false';
+    }
 })
 
-//When clicking on editIcon and changing text
-//when save button not pressed, show current text after clicking
-//either on comment button, document or editicon without save.
+
 
 save.addEventListener('click', () => {
     const text = comment.value;
+    const newTitle = presentationTitle.innerHTML;
     comment.disabled = true;
     showImageText.classList.remove('active2');
+    presentationTitle.classList.remove('active3');
     save.style.display = 'none';
     fetch('/albums/updateComment', {
         method: 'PUT' ,
@@ -198,7 +220,8 @@ save.addEventListener('click', () => {
         },
         body: JSON.stringify({ 
             id: pictures[index].id,
-            comment: text
+            comment: text,
+            title: newTitle
         })
     })
     .then(response => response.json())
@@ -207,14 +230,21 @@ save.addEventListener('click', () => {
             return;
         }
         pictures[index].comment = text;
-     
+        pictures[index].title = newTitle;
+
     })
 })
 
 
 function disableEdit(e) {
-    if(!showImageText.contains(e.target) && showImageText.classList.contains('active2')) {
+    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target)) {
         showImageText.classList.remove('active2');
+        presentationTitle.classList.remove('active3');
+        
+        presentationTitle.contentEditable = 'false';
+        comment.disabled = true;
+        
+        presentationTitle.innerHTML = pictures[index].title;
         currentComment();
         save.style.display = 'none';
     }

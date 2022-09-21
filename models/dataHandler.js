@@ -190,7 +190,7 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, rating, albumIds, cal
     });
 }
 
-const updateComment = (pictureId, comment, callback) => {
+const updateComment = (pictureId, comment, title, callback) => {
     fs.readFile(picturesFile, (err, data) => {
         if(err){
             callback("Could not retrieve pictures");
@@ -200,6 +200,7 @@ const updateComment = (pictureId, comment, callback) => {
         pictures.forEach(picture => {
             if(picture.id == pictureId){
                 picture.comment = comment;
+                picture.title = title;
                 return;
             }
         });
