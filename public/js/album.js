@@ -141,8 +141,9 @@ commentIcon.addEventListener('click', (e) => {
 })
 
 function hideBox(e) {
-    if(!showImageText.contains(e.target)) {
+    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target)) {
         showImageText.classList.remove('active');
+        presentationTitle.classList.remove('active3');
         presentationPicture.style.opacity = 1;
     }
 }
@@ -159,16 +160,22 @@ editIcon.addEventListener('click', (e) => {
         currentComment();
         comment.disabled = true;
     }
+    if(presentationTitle.classList.toggle('active3')){
+        e.stopPropagation();
+        presentationTitle.contentEditable = 'true';
+    }else{
+        presentationTitle.contentEditable = 'false';
+    }
 })
 
-//When clicking on editIcon and changing text
-//when save button not pressed, show current text after clicking
-//either on comment button, document or editicon without save.
+
 
 save.addEventListener('click', () => {
     const text = comment.value;
+    const newTitle = presentationTitle.innerHTML;
     comment.disabled = true;
     showImageText.classList.remove('active2');
+    presentationTitle.classList.remove('active3');
     save.style.display = 'none';
     fetch('/albums/updateComment', {
         method: 'PUT' ,
@@ -177,7 +184,8 @@ save.addEventListener('click', () => {
         },
         body: JSON.stringify({ 
             id: pictures[index].id,
-            comment: text
+            comment: text,
+            title: newTitle
         })
     })
     .then(response => response.json())
@@ -186,14 +194,21 @@ save.addEventListener('click', () => {
             return;
         }
         pictures[index].comment = text;
-     
+        pictures[index].title = newTitle;
+
     })
 })
 
 
 function disableEdit(e) {
-    if(!showImageText.contains(e.target)) {
+    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target)) {
         showImageText.classList.remove('active2');
+        presentationTitle.classList.remove('active3');
+        
+        presentationTitle.contentEditable = 'false';
+        comment.disabled = true;
+        
+        presentationTitle.innerHTML = pictures[index].title;
         currentComment();
         save.style.display = 'none';
     }
