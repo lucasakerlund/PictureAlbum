@@ -9,18 +9,32 @@ const presentationPicture = document.querySelector('.presentation-image-containe
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
 const presentationButton = document.querySelector('.presentation-button');
+const downloadbutton = document.getElementById('downloadbtnjs');
+const downloadPanel = document.getElementById('popup');
 
 let index = 0;
 
 closebutton.addEventListener('click', e => {
     closePresentation();
+    
 });
 
 window.addEventListener('keydown', e =>{ 
-    if (e.key == "Escape") {
-        closePresentation()
+    if (e.key == 'Escape') {
+        if(downloadPanel.classList.length > 1 && presentation.style.visibility == 'visible'){
+            downloadbutton.click();
+            closePresentation();
+        }else if(downloadPanel.classList.length == 1 && presentation.style.visibility == 'visible'){
+            closePresentation();
+        }
     }
 })
+
+downloadbutton.addEventListener('click', e =>{
+    downloadPanel.classList.toggle('.popup-toggle')
+})
+
+
 
 document.addEventListener('click', e => {
     if(e.target.className == 'image'){
@@ -64,6 +78,7 @@ previousButton.addEventListener('click', e1 => {
 
 nextButton.addEventListener('click', e1 => {
     showImage(index+=1);
+    
 });
 
 window.addEventListener('keydown', (event) => {

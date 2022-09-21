@@ -3,25 +3,19 @@
     padding: 0;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-}
-
 .container{
-    display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.btn{
+.downloadbtn{
     margin-bottom: 100px;
     margin-left: 2em;
 }
 
 .popup{
     position: relative;
-    visibility: hidden;
+    display: none;
 }
 
 .rectangle{
@@ -31,6 +25,7 @@ body{
     left: -240px;
     background-color: red;
     border-radius: 2%;
+    opacity: 0.5;
 }
 
 .rectangle{
@@ -39,58 +34,22 @@ body{
 }
 
 .rectangle h1{
-    font-size: 25px;
+
     font-family: 'Courier New', Courier, monospace;
     align-items: center;
     color: white;
     text-align: center;
 }
 
-
-.highRes:visited{
-    color: white;
-    text-decoration: none;
-    width: 60%;
-    text-align: center;
-    width: 100%;
-}
-
-.highRes:visited h2{
-    text-align: center;
-}
-
-.lowRes:visited{
-    color: white;
-    text-decoration: none;
-    width: 60%;
-    text-align: center;
-
-}
-
-.highRes{
-    color: white;
-    text-decoration: none;
-    width: 60%;
-    text-align: center;
-
-}
-
-.lowRes{
-    color: white;
-    text-decoration: none;
-    width: 60%;
-    text-align: center;
-
-}
-
 .triangle{
     position: absolute;
-    bottom: -25px;
+    bottom: 0px;
     left: 175px;
-    transform: rotate(45deg);
-    width: 30px;
-    height: 30px;
-    background-color: red;
+    width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 40px solid rgba(255, 0, 0, 0.5);
 }
 
 @keyframes moveR{
@@ -107,25 +66,60 @@ body{
 @keyframes moveT {
     from{
         opacity: 0;
-        bottom: -50px;
     }
     to{
-        opacity: 100;
-        bottom: -25px;
+        opacity: 1;
     }
 }
 .popup-toggle{
-    visibility: visible;
+    display: block;
 }
 
 .popup-toggle .rectangle{
     animation-name: moveR;
+    animation-delay: -1.25s;
     animation-iteration-count: 1;
     animation-duration: 2s;
 }
 
 .popup-toggle .triangle{
-    animation-name: moveT;
+    animation-name: moveT;  
     animation-iteration-count: 1;
-    animation-duration: 1s;
+    animation-duration: 2s;
+}
+
+.highRes:visited{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.highRes:visited h2{
+    text-align: center;
+}
+
+.lowRes:visited{
+    color: white;
+    text-decoration: none;
+    text-align: center; 
+}
+
+.highRes{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.lowRes{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+a[padding-link]{
+    padding: 20px;
+}
+
+h1[padding-title]{
+    padding: 10px;
 }

@@ -1,4 +1,4 @@
-const btn = document.getElementById("btn")
+const btn = document.getElementById("downloadbtnjs")
 const popup = document.getElementById("popup")
 
 btn.addEventListener("click", e =>{
