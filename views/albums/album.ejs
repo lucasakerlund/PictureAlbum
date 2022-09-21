@@ -20,7 +20,7 @@
                         <p>Presentation</p>
                         <img src="/presentation.svg" alt="open presentation">
                     </div>
-                    <div class="remove-button selected">
+                    <div class="remove-selected-pictures-button selected">
                         <p>Ta bort</p>
                         <img src="/delete-button.svg" alt="delete selected pictures">
                     </div>
@@ -32,13 +32,13 @@
             <% pictures.forEach(picture => { %>
                 <div class="picture-container">
                     <p><%= picture.title %></p>
-                    <div class="image-container">
+                    <div class="image-container" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>">
                         <div class="rating">
                             <% for( let index = 0; index < picture.rating; index++ ) { %>
                                 <img icon src="/star-icon.svg">
                             <% } %>
                         </div>
-                        <img class="image" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
+                        <img class="image" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
                     </div>
                 </div>
             <% }) %>
@@ -75,6 +75,7 @@
     </div>
 
     <script>
+        const albumId = "<%= album.id %>";
         const allPictures = <%- JSON.stringify(pictures) %>;
     </script>
     <script src="/js/album.js"></script>

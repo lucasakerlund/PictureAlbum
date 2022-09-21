@@ -153,7 +153,7 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, rating, albumIds, cal
             imgHiRes,
             rating
         });
-        fs.writeFile(picturesFile, JSON.stringify(list), (err) => {
+        fs.writeFile(picturesFile, JSON.stringify(list, null, 2), (err) => {
             if(err) {
                 console.log(err);
                 return false;
@@ -179,7 +179,7 @@ const uploadPicture = (title, comment, imgLoRes, imgHiRes, rating, albumIds, cal
                 albums.filter(album => album.id == albumIds)[0].picture_ids.push(pictureId);
             }
             //
-            fs.writeFile(albumsFile, JSON.stringify(albums), (err) => {
+            fs.writeFile(albumsFile, JSON.stringify(albums, null, 2), (err) => {
                 if(err){
                     console.log(err);
                     return false;
@@ -213,6 +213,98 @@ const updateComment = (pictureId, comment, callback) => {
     });
 }
 
+const createAlbum = (title, description, img, callback) => {
+    fs.readFile(albumsFile, (err, data) => {
+        if(err){
+            callback("Could not read albums file.");
+            return;
+        }
+        let list = JSON.parse(data);
+        list.push({
+            "id": crypto.randomUUID(),
+            title,
+            description,
+            "image": img,
+            "picture_ids": [] 
+        });
+        fs.writeFile(albumsFile, JSON.stringify(list, null, 2), (err) => {
+            if(err){
+                callback("Could not save the created album.");
+                return;
+            }
+            callback(false);
+        });
+    });
+}
+
+/**
+ * 
+ * @param {*} pictureIds
+ * Takes in a list of picture ids and if the id doesnt exist in at least one album it will get removed.
+ */
+const removeUnusedPictures = (pictureIds) => {
+    fs.readFile(albumsFile, (err, data) => {
+        if(err) {
+            console.log(err);
+            return;
+        }
+        let albumList = JSON.parse(data);
+        fs.readFile(picturesFile, (err, data) => {
+            if(err) {
+                console.log(err);
+                return;
+            }
+
+            let pictureList = JSON.parse(data);
+
+            pictureIds.forEach(pictureId => {
+                for(let i = 0; i < albumList.length; i++){
+                    if(albumList[i].picture_ids.includes(pictureId)) {
+                        return;
+                    }
+                }
+                let pictureToRemove = pictureList.filter(picture => picture.id == pictureId)[0];
+                fs.unlinkSync('./data/pictures/' + pictureToRemove.imgLoRes);
+                fs.unlinkSync('./data/pictures/' + pictureToRemove.imgHiRes);
+                pictureList = pictureList.filter(picture => picture.id != pictureId);
+            });
+            fs.writeFile(picturesFile, JSON.stringify(pictureList, null, 2), (err) => {
+                if(err) {
+                    console.log(err);
+                }
+            });
+        });
+    });
+}
+
+const removePictures = (albumId, pictureIds, callback) => {
+    fs.readFile(albumsFile, (err, data) => {
+        if(err){
+            callback("Could not read albums file.");
+            return;
+        }
+        let list = JSON.parse(data);
+
+        list.forEach(album => {
+            if(album.picture_ids.in){
+
+            }
+            if(album.id == albumId){
+                album.picture_ids = album.picture_ids.filter(pictureId => !pictureIds.includes(pictureId));
+            }
+        })
+
+        fs.writeFile(albumsFile, JSON.stringify(list, null, 2), err => {
+            if(err){
+                callback("Could save the albums file.");
+                return;
+            }
+            callback(false);
+        });
+
+        removeUnusedPictures(pictureIds);
+    });
+}
 
 module.exports = {
     ratingAlbums,
@@ -221,5 +313,7 @@ module.exports = {
     getPicture,
     getPicturesFromIds,
     uploadPicture,
-    updateComment
+    updateComment,
+    createAlbum,
+    removePictures,
 }

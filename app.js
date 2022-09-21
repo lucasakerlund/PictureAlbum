@@ -1,4 +1,5 @@
 const express = require('express');
+const albumsRoutes = require('./routes/albumsRoutes');
 const albumRoutes = require('./routes/albumRoutes');
 const apiRoutes = require('./routes/apiRoutes'); 
 const database = require('./models/dataHandler');
@@ -16,13 +17,15 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use(express.static('data/pictures'));
+app.use(express.static('data/albumPictures'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.redirect('/albums');
 });
 
-app.use('/albums', albumRoutes);
+app.use('/albums', albumsRoutes);
+app.use('/album', albumRoutes);
 app.use('/api', apiRoutes);
 
 app.post('/picture/upload', upload.fields([{ name : "image-low", maxCount: 1 }, { name : "image-high", maxCount: 1 }]), (req, res) => {

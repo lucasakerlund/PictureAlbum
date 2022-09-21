@@ -1,10 +1,13 @@
+"use strict";
+
 const express = require('express');
 const albumController = require('../controllers/albumController');
 
+const multer = require('multer');
+
 const router = express.Router();
 
-router.get('/', albumController.get_albums_index);
-router.get('/:id', albumController.get_album);
-router.put('/updateComment', albumController.update_comment);
+router.post('/removePictures', albumController.remove_pictures);
+
 
 module.exports = router;

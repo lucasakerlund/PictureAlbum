@@ -15,7 +15,8 @@ body {
 .content {
     display: flex;
     flex-direction: column;
-    overflow-y: overlay;
+    overflow-y: auto;
+    overflow-x: hidden;
     flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
 }
 
@@ -113,7 +114,8 @@ body {
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-    overflow-y: overlay;
+    overflow-y: auto;
+    overflow-x: hidden;
     z-index: 0;
     flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
 }
@@ -129,6 +131,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 40px;
+    max-width: 100%;
 }
 
 .picture-container p {
@@ -139,9 +142,7 @@ body {
     width: 200px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    
 }
-
 
 .image-container .rating{
     display: flex;
@@ -155,15 +156,16 @@ body {
 
 
 .image-container {
+    box-sizing: border-box;
     position: relative;
     background: rgba(24, 24, 24, 0.75);
     width: 200px;
-    height: 200px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1; /*Keep the aspect ratio when scaling the container*/
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 1px 1px 2px black;
     margin-top: 5px;
-    box-sizing: border-box;
 }
 
 .image-container img[icon]{ /*star icons for rating */
@@ -233,6 +235,11 @@ body {
 .presentation-close img {
     width: 60px;
     height: auto;
+}
+
+.presentation-close:hover {
+    cursor: pointer;
+    background-color: rgba(141, 141, 141, .2);
 }
 
 .presentation-title {
@@ -359,18 +366,16 @@ body {
     margin: 10px 0;
 }
 
-.presentation-close:hover {
-    cursor: pointer;
-    background-color: rgba(141, 141, 141, .2);
-}
-
 .presentation-previous, .presentation-next {
     position: absolute;
-    height: 70px;
-    width: 70px;
+    width: 15vw;
+    max-height: 70px;
+    max-width: 70px;
     border-radius: 100%;
-    margin: auto 50px;
+    margin: auto 30px;
+    padding: 5px;
     overflow: hidden;
+    background-color: rgba(27, 27, 27, 0.9);
 }
 
 .presentation-previous {
@@ -406,6 +411,7 @@ body {
 @media (max-width: 850px) {
 
     .tools {
+        justify-content: center;
         margin-right: 0;
     }
 

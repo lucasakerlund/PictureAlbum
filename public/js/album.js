@@ -15,6 +15,7 @@ const showImageText = document.querySelector(".image-text-box");
 const comment = document.querySelector(".image-text");
 const save = document.querySelector(".save-box");
 const selectButtons = document.querySelectorAll('.tools .selected'); //Buttons to appear when images are selected
+const removeButton = document.querySelector('.remove-selected-pictures-button');
 
 let index = 0;
 
@@ -29,13 +30,13 @@ window.addEventListener('keydown', e =>{
 })
 
 document.addEventListener('click', e => {
-    if(e.target.className == 'image'){
+    if(e.target.closest('.image-container')){
+        let imageContainer = e.target.closest('.image-container');
         if(e.ctrlKey){
-            const container = e.target.closest('.image-container');
-            if(container.classList.toggle('selected')){
-                selectedPictures.push(JSON.parse(e.target.dataset.object));
+            if(imageContainer.classList.toggle('selected')){
+                selectedPictures.push(JSON.parse(imageContainer.dataset.object));
             }else {
-                selectedPictures = selectedPictures.filter(p => p.id != e.target.dataset.id);
+                selectedPictures = selectedPictures.filter(p => p.id != imageContainer.dataset.id);
             }
             if(selectedPictures.length > 0){
                 selectButtons.forEach(button => button.style.display = 'inherit');
@@ -46,7 +47,7 @@ document.addEventListener('click', e => {
         }
         clearSelectedPictures();
         pictures = allPictures;
-        index = pictures.map(p => p.id).indexOf(e.target.dataset.id);
+        index = pictures.map(p => p.id).indexOf(imageContainer.dataset.id);
         showImage(index);
     }else{
         if(e.target.className == 'album-content'){
@@ -126,6 +127,26 @@ const clearSelectedPictures = () => {
     selectedPictures = [];
 }
 
+removeButton.addEventListener('click', e => {
+    fetch('/album/removePictures', {
+        method: 'POST' ,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            albumId: albumId,
+            pictureIds: selectedPictures.map(p => p.id)
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.err) {
+            return;
+        }
+        location.reload();
+    });
+});
+
 /**Text-box for image is hidden when clicking outside the box */
 document.addEventListener('click', hideBox );
 
@@ -192,7 +213,7 @@ save.addEventListener('click', () => {
 
 
 function disableEdit(e) {
-    if(!showImageText.contains(e.target)) {
+    if(!showImageText.contains(e.target) && showImageText.classList.contains('active2')) {
         showImageText.classList.remove('active2');
         currentComment();
         save.style.display = 'none';

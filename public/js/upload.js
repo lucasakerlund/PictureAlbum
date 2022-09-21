@@ -1,38 +1,47 @@
 "use strict";
 
-const imageInputLow = document.getElementById('image-input-low');
-const imageInputHigh = document.getElementById('image-input-high');
-const previewImageContainer = document.querySelector('.preview-image');
-const imageItemLow = document.getElementById('image-item-low');
-const imageItemHigh = document.getElementById('image-item-high');
+const imageInputLow = document.getElementById('image-input-low-upload');
+const imageInputHigh = document.getElementById('image-input-high-upload');
+const previewImageUpload = document.getElementById('preview-image-upload');
+const imageItemLow = document.getElementById('image-item-low-upload');
+const imageItemHigh = document.getElementById('image-item-high-upload');
+const closeUploadButton = document.querySelector('.close-upload'); 
 
 const select = document.querySelector('.custom-select select');
 
+const closeUpload = () => {
+    document.querySelector('.upload-window').classList.toggle('active', false);
+};
+
 window.addEventListener('click', e => {
     if(!e.target.closest('.upload-window') && e.target.className != "navbar-upload"){
-        document.querySelector('.upload-window').classList.toggle('active', false);
+        closeUpload();
     }
 });
 
+closeUploadButton.addEventListener('click', () => {
+    closeUpload();
+});
+
 imageInputLow.addEventListener('change', () => {
-    handleImageSelector(imageItemLow);
+    handleImageSelector(imageItemLow, previewImageUpload);
 }, false);
 
 imageInputHigh.addEventListener('change', () => {
-    handleImageSelector(imageItemHigh);
+    handleImageSelector(imageItemHigh, previewImageUpload);
 }, false);
 
-const handleImageSelector = (imageItem) => {
+const handleImageSelector = (imageItem, preview) => {
     let imageInput = imageItem.querySelector('input');
     let uploadButton = imageItem.querySelector('.custom-image-input');
 
     if(!imageInput.files[0]){ //If the file is empty
         uploadButton.classList.toggle('uploaded', false);
         uploadButton.querySelector('img').src = '/upload-image.svg';
-        uploadButton.querySelector('p').innerHTML = "Välj bild";
-        imageItem.querySelector('.upload-image-text').innerHTML = 'Ingen fil har valts';
+        uploadButton.querySelector('p').innerText = "Välj bild";
+        imageItem.querySelector('.upload-image-text').innerText = 'Ingen fil har valts';
 
-        previewImageContainer.querySelector('img').src = '/image-preview.svg';
+        preview.querySelector('img').src = '/image-preview.svg';
         return;
     }
 
@@ -44,16 +53,16 @@ const handleImageSelector = (imageItem) => {
         return;
     }
 
-    imageItem.querySelector('.upload-image-text').innerHTML = file.name;
+    imageItem.querySelector('.upload-image-text').innerText = file.name;
 
     uploadButton.classList.toggle('uploaded', true);
     uploadButton.querySelector('img').src = '/reupload-image.svg';
-    uploadButton.querySelector('p').innerHTML = "Byt bild";
+    uploadButton.querySelector('p').innerText = "Byt bild";
 
     if(FileReader){
         let fr = new FileReader();
         fr.onload = () => {
-            previewImageContainer.querySelector('img').src = fr.result;
+            preview.querySelector('img').src = fr.result;
         }
         fr.readAsDataURL(file);
     }

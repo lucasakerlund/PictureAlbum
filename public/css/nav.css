@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body {
+    width: 100%;
+}
+
 .navbar {
     position: relative;
     min-height: 80px;
@@ -16,16 +20,19 @@
 }
 
 .navbar-logo{
-    display: flex;
-    background: linear-gradient(to right, orange, red, blue);
-    justify-content: center;
+    display: inline;
     padding-left: 20px;
+    width: auto;
+}
+
+.navbar-logo a {
+    background: linear-gradient(to right, white 30%, rgb(61, 184, 255));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     font-size: 1.5rem;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .navbar-menu {
@@ -62,6 +69,7 @@
     border: 2px solid #fff;
     border-radius: 5px;
     padding: 5px;
+    text-align: center;
 }
 
 .navbar-upload:hover {
