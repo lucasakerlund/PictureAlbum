@@ -5,7 +5,7 @@ const get_albums_index = (req, res) => {
         if(err) {
             console.log(err);
         }
-        res.render('albums/index', { title: 'Albums', albums});
+        res.render('albums/index', { title: 'Albums', albums, ratingAlbums: database.ratingAlbums});
     });
 }
 
@@ -20,7 +20,14 @@ const get_album = (req, res) => {
     });
 }
 
+const update_comment = (req, res) => {
+    database.updateComment(req.body.id, req.body.comment, req.body.title, (err) => {
+        res.json({ err });
+    });
+}
+
 module.exports = {
     get_albums_index,
     get_album,
+    update_comment
 }

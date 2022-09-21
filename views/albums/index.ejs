@@ -7,20 +7,30 @@
     <%- include('../components/nav.ejs')%>
     
     <div class="content">
+        <% ratingAlbums.forEach(album => { %>
+            <div class="album-container">
+                <p><%= album.title %></p>
+                <div class="image-container rating-album">
+                    <a class="album-clickable" href="/albums/<%= album.id %>">
+                        <img src="<%= album.image %>" alt="no image available">
+                    </a>
+                </div>
+            </div>
+        <% }); %>
         <% albums.forEach(album => { %>
             <div class="album-container">
                 <p><%= album.title %></p>
                 <div class="image-container">
                     <a class="album-clickable" href="/albums/<%= album.id %>">
                         <% if (album.image) { %>
-                            <img src="/<%= album.image %>" alt="no image available">
+                            <img src="/<%= album.image %>" alt="image of the album">
                         <% }else { %>
                             <img src="/no-image-available.svg" alt="no image available">
                         <% } %>
                     </a>
                 </div>
             </div>
-        <% }) %>
+        <% }); %>
     </div>
     
 </body>
