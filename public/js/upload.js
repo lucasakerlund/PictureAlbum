@@ -5,7 +5,7 @@ const imageInputHigh = document.getElementById('image-input-high-upload');
 const previewImageUpload = document.getElementById('preview-image-upload');
 const imageItemLow = document.getElementById('image-item-low-upload');
 const imageItemHigh = document.getElementById('image-item-high-upload');
-const closeUploadButton = document.querySelector('.close-upload'); 
+const closeUploadButton = document.querySelector('.close-upload');
 
 const select = document.querySelector('.custom-select select');
 

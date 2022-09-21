@@ -9,15 +9,19 @@ const presentationPicture = document.querySelector('.presentation-image-containe
 const previousButton = document.querySelector('.presentation-previous');
 const nextButton = document.querySelector('.presentation-next');
 const presentationButton = document.querySelector('.presentation-button');
-const downloadbutton = document.getElementById('downloadbtnjs');
-const downloadPanel = document.getElementById('popup');
+const removeButton = document.querySelector('.remove-selected-pictures-button');
+
 const commentIcon = document.querySelector(".image-comment-icon");
 const editIcon = document.querySelector(".edit-icon");
 const showImageText = document.querySelector(".image-text-box");
 const comment = document.querySelector(".image-text");
 const save = document.querySelector(".save-box");
 const selectButtons = document.querySelectorAll('.tools .selected'); //Buttons to appear when images are selected
-const removeButton = document.querySelector('.remove-selected-pictures-button');
+
+const btn = document.getElementById("downloadbtnjs");
+const popup = document.getElementById("popup");
+const lowResDownload = document.getElementById('lowResDown');
+const highResDownload = document.getElementById('highResDown');
 
 let index = 0;
 
@@ -28,20 +32,9 @@ closebutton.addEventListener('click', e => {
 
 window.addEventListener('keydown', e =>{ 
     if (e.key == 'Escape') {
-        if(downloadPanel.classList.length > 1 && presentation.style.visibility == 'visible'){
-            downloadbutton.click();
-            closePresentation();
-        }else if(downloadPanel.classList.length == 1 && presentation.style.visibility == 'visible'){
-            closePresentation();
-        }
+        closePresentation();
     }
 })
-
-downloadbutton.addEventListener('click', e =>{
-    downloadPanel.classList.toggle('.popup-toggle')
-})
-
-
 
 document.addEventListener('click', e => {
     if(e.target.closest('.image-container')){
@@ -252,5 +245,41 @@ function disableEdit(e) {
 
 function currentComment() {
     comment.value = pictures[index].comment;
+}
+
+/* Download */
+btn.addEventListener("click", e =>{
+    popup.classList.toggle("popup-toggle");
+});
+
+window.addEventListener('click', e => {
+    if(!e.target.closest('popup') && e.target != btn){
+        popup.classList.toggle("popup-toggle", false);
+    }
+});
+
+lowResDownload.addEventListener('click', ()=>{
+    downloadImage('/' + pictures[index].imgLoRes);
+});
+
+highResDownload.addEventListener('click', ()=>{
+    downloadImage('/' + pictures[index].imgHiRes);
+});
+
+function downloadImage(url) {
+    console.log(url);
+    fetch(url, {
+      mode : 'no-cors',
+    })
+      .then(response => response.blob())
+      .then(blob => {
+      let blobUrl = window.URL.createObjectURL(blob);
+      let a = document.createElement('a');
+      a.download = url.replace(/^.*[\/]/, '');
+      a.href = blobUrl;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    })
 }
 
