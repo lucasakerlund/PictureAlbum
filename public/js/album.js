@@ -83,13 +83,13 @@ nextButton.addEventListener('click', e1 => {
 
 window.addEventListener('keydown', (event) => {
     if(event.key == "ArrowLeft"){
-        if(index <= 0){
+        if(index <= 0  || showImageText.classList.contains('active2')){
             return;
         }
         showImage(index-=1);
     }
     if(event.key == "ArrowRight"){
-        if(index >= pictures.length-1){
+        if(index >= pictures.length-1 || showImageText.classList.contains('active2')){
             return;
         }
         showImage(index+=1);
@@ -97,17 +97,12 @@ window.addEventListener('keydown', (event) => {
 });
 
 const showImage = index => {
-    console.log('index ' + index);
-    console.log(pictures);
     presentationPicture.src = ''; //needs to be reset inorder to avoid showing the previous image upon loading the new image
     presentationPicture.src = '../' + pictures[index].imgHiRes;
-    presentationTitle.innerHTML = pictures[index].title;
-    comment.innerHTML = pictures[index].comment;
+    presentationTitle.innerText = pictures[index].title;
+    comment.value = pictures[index].comment;
     presentation.style.visibility = 'visible';
-    console.log(presentationPicture.imgHiRes)
 
-    console.log('PictureAlbum/data/pictures/' + pictures[index].imgHiRes)
-    
     
     if(index > 0) {
         previousButton.style.visibility = 'inherit';
@@ -230,7 +225,7 @@ save.addEventListener('click', () => {
 
 
 function disableEdit(e) {
-    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target)) {
+    if(!showImageText.contains(e.target) && !presentationTitle.contains(e.target) && e.target.closest('.presentation-container')) {
         showImageText.classList.remove('active2');
         presentationTitle.classList.remove('active3');
         
@@ -267,7 +262,6 @@ highResDownload.addEventListener('click', ()=>{
 });
 
 function downloadImage(url) {
-    console.log(url);
     fetch(url, {
       mode : 'no-cors',
     })

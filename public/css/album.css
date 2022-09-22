@@ -43,6 +43,9 @@ body {
     align-items: center;
     font-size: 2rem;
     color: white;
+    white-space: nowrap;
+    text-overflow: none;
+    overflow: hidden;
 }
 
 .menu .album-right {
@@ -217,7 +220,7 @@ body {
     background: rgba(0,0,0,0.3);
     height: 80px;
     min-height: 80px;
-    width: 100%;
+    max-width: 100%;
     z-index: 0;
 }
 
@@ -233,9 +236,14 @@ body {
     align-items: center;
     font-size: 2rem;
     color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .presentation-right {
+    display: flex;
+    justify-content: center;
     height: 100%;
     flex: 1;
 }
@@ -271,6 +279,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 400px;
     height: 100%;
     width: auto;
     color: white;
@@ -562,5 +571,35 @@ h1[padding-title]{
 @media (max-width: 550px) {
     .container {
         width: 280px;
+    }
+}
+
+@media (max-width: 450px) {
+    .presentation-bar {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 100px auto;
+        grid-template-areas: 
+        'close title'
+        'tools tools';
+    }
+
+    .presentation-left {
+        grid-area: close;
+        flex: 0;
+    }
+
+    .presentation-title {
+        grid-area: title;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .presentation-right {
+        grid-area: tools;
+    }
+
+    .image-text-box {
+        width: 50vw;
     }
 }
