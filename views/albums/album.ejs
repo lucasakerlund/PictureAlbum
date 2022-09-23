@@ -33,12 +33,15 @@
                 <div class="picture-container">
                     <p><%= picture.title %></p>
                     <div class="image-container" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>">
+                        <img class="image" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
                         <div class="rating">
                             <% for( let index = 0; index < picture.rating; index++ ) { %>
                                 <img icon src="/star-icon.svg">
                             <% } %>
                         </div>
-                        <img class="image" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
+                        <div class="image-part-of-comment">
+                            <%= picture.comment %>
+                        </div>
                     </div>
                 </div>
             <% }) %>
