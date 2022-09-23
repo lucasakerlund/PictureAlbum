@@ -2,32 +2,65 @@ body {
     position: fixed;
     top: 0;
     right: 0;
+    width: 100%;
     height: 100vh;
     background: url('../background.jpg');
+    backdrop-filter: blur(5px);
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.menu {
+.content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
+}
+
+.menu {
+    position: relative;
+    display: flex;
     align-items: center;
     background: rgba(0,0,0,0.3);
     height: 80px;
-    width: 100%;
+    min-height: 80px;
+    min-width: 100%;
+    z-index: 0;
+}
+
+.menu .album-left {
+    height: 100%;
+    flex: 1;
+}
+
+.album-title {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    white-space: nowrap;
+    text-overflow: none;
+    overflow: hidden;
+}
+
+.menu .album-right {
+    height: 100%;
+    flex: 1;
 }
 
 .back {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    font-size: 1.2rem;
     position: relative;
-    left: 50px;
-    text-decoration: none;
-    color: black;
+    width: 60px;
+    height: 100%;
+    padding: 0 20px;
 }
 
 .back img {
@@ -35,25 +68,57 @@ body {
     height: auto;
 }
 
-.back:hover {
-    fill: green;
+.tools {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+    height: 100%;
+    width: auto;
 }
 
-.title {
-    font-size: 2rem;
+.tools div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    height: 100%;
+    margin: 0 10px;
+    padding: 0 20px;
+}
+
+.tools div:hover {
+    cursor: pointer;
     color: white;
 }
 
-.tools {
-
+.tools div:hover, .back:hover {
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.14), transparent 100%);
 }
 
-.content {
+.tools .selected {
+    display: none;
+}
+
+.tools img {
+    position: relative;
+    width: 15vw;
+    max-width: 60px;
+    max-height: 100%;
+    display: none;
+}
+
+.album-content {
     display: flex;
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
-    overflow-y: overlay;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 0;
+    flex: 1; /*Makes the content fill the remaining height. Need the space for deselecting picture-container when ctrl + click*/
 }
 
 .album-clickable {
@@ -62,14 +127,15 @@ body {
     height: auto;
 }
 
-.album-container {
+.picture-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 40px;
+    max-width: 100%;
 }
 
-.album-container p {
+.picture-container p {
     text-align: center;
     font-weight: bold;
     color: white;
@@ -79,14 +145,32 @@ body {
     text-overflow: ellipsis;
 }
 
+.image-container .rating{
+    display: flex;
+    justify-content: space-around;
+    visibility: hidden;
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    margin-left: 10px;
+}
+
+
 .image-container {
-    background: rgb(172, 172, 172);
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(24, 24, 24, 0.75);
     width: 200px;
-    height: 200px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1; /*Keep the aspect ratio when scaling the container*/
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 1px 1px 2px black;
     margin-top: 5px;
+}
+
+.image-container img[icon]{ /*star icons for rating */
+    width: 15%;
 }
 
 .image-container img {
@@ -95,6 +179,427 @@ body {
 }
 
 .image-container:hover {
+    cursor: pointer;
     box-shadow: 1px 1px 10px black;
     transition: box-shadow .1s;
+}
+
+.image-container:hover > .rating{ /*new changes erkan*/
+    visibility: visible;
+}
+
+
+.image-container.selected {
+    border: 3px solid blue;
+}
+
+.image-container.selected .rating{
+    visibility: visible;
+}
+
+.image-container.selected > .rating{ /*new erkan*/
+    visibility: visible;
+}
+
+/* Presentation */
+.presentation-container {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #121213d2;
+    z-index: 999;
+}
+
+.presentation-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    height: 80px;
+    min-height: 80px;
+    max-width: 100%;
+    z-index: 0;
+}
+
+.presentation-left {
+    height: 100%;
+    flex: 1;
+}
+
+.presentation-title {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.presentation-right {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    flex: 1;
+}
+
+.presentation-close {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 60px;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.presentation-close img {
+    width: 60px;
+    height: auto;
+}
+
+.presentation-close:hover {
+    cursor: pointer;
+    background-color: rgba(141, 141, 141, .2);
+}
+
+.presentation-title.active3 {
+    border: 2px white solid;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.presentation-tools {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    height: 100%;
+    width: auto;
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: none;
+}
+
+.presentation-tools > div {
+    position: relative;
+    margin: 0 auto;
+    padding: 7px;
+}
+
+.presentation-tools > div:hover {
+    cursor: pointer;
+    color: rgb(170, 170, 170);
+    text-decoration: underline;
+}
+
+.image-text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50vh;
+    width: 28vw;
+    animation: topAnimation 0.3s;
+    display: none;
+    z-index: 998;
+}
+
+.image-text-box.active{
+    display: block;
+}
+
+.image-text-box.active2 {
+    border: 3px white solid;
+    border-radius: 20px;
+}
+
+.image-text {
+    font: italic 1.2em "Fira Sans", serif;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    line-height: 30px;
+    resize: none;
+    background-color: rgb(24, 24, 24, 0.80);
+    outline: none;
+    border-radius: 20px;
+    color: white;
+}
+
+.image-text-tools {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.edit-icon img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-icon:hover {
+    color: gray;
+}
+
+.save-box {
+    position: absolute;
+    width: 75px;
+    height: 40px;
+    background-color: rgba(155, 155, 155, 0.5);
+    bottom: 0;
+    left: 0;
+    color:white;
+    display: none;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.save-box:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+@keyframes topAnimation {
+    from {top: 40%;}
+    to {top: 50%;}
+}
+
+/* Download */
+.downloadbtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    position: absolute;
+    top: 100%;
+    left: 75%;
+    translate: -100% 0;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: auto;
+    z-index: 999;
+}
+
+.popup{
+    display: none;
+}
+
+.rectangle{
+    background-color: rgba(24, 24, 24, .9);
+    border-radius:  5px 0 5px 5px;
+}
+
+.rectangle{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.rectangle h1{
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    color: white;
+    text-align: center;
+    white-space: normal;
+}
+
+.rectangle > a:hover {
+    background-color: rgba(102, 102, 102, 0.9);
+}
+
+.triangle{
+    position: relative;
+    translate: -100% 0;
+    left: 100%;
+    width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 40px solid rgba(24, 24, 24, .9);
+}
+
+@keyframes moveR{
+    from{
+        left: 125%;
+        opacity: 0;
+    }
+    to{
+        left: 75%;
+        opacity: 1;
+    }
+}  
+.popup-toggle{
+    display: block;
+}
+
+.popup-toggle{
+    animation-name: moveR;
+    animation-duration: 1s;
+}
+
+.highRes:visited{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.highRes:visited h2{
+    text-align: center;
+}
+
+.lowRes:visited{
+    color: white;
+    text-decoration: none;
+    text-align: center; 
+}
+
+.highRes{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.lowRes{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+h1[padding-title]{
+    padding: 10px;
+}
+
+.presentation-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    z-index: -1;
+}
+
+.presentation-previous, .presentation-next {
+    position: absolute;
+    width: 15vw;
+    max-height: 70px;
+    max-width: 70px;
+    border-radius: 100%;
+    margin: auto 30px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: rgba(27, 27, 27, 0.9);
+}
+
+.presentation-previous {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    z-index: 998;
+}
+
+.presentation-next {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    z-index: 998;
+}
+
+.presentation-previous:hover, .presentation-next:hover {
+    cursor: pointer;
+    background-color: rgba(141, 141, 141, .2);
+}
+
+.presentation-image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (max-width: 850px) {
+
+    .tools {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .tools div {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tools div p {
+        display: none;
+    }
+
+    .tools div img {
+        display: inherit;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media (max-width: 550px) {
+    .container {
+        width: 280px;
+    }
+}
+
+@media (max-width: 450px) {
+    .presentation-bar {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 100px auto;
+        grid-template-areas: 
+        'close title'
+        'tools tools';
+    }
+
+    .presentation-left {
+        grid-area: close;
+        flex: 0;
+    }
+
+    .presentation-title {
+        grid-area: title;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .presentation-right {
+        grid-area: tools;
+    }
+
+    .image-text-box {
+        width: 50vw;
+    }
 }

@@ -6,28 +6,95 @@
     
     <%- include('../components/nav.ejs') %>
     
-    <div class="menu">
-        <a class="back" href="/albums"><img src="/left-arrow.svg" alt="back arrow"></a>
-        <div class="title"><%= album.title %></div>
-        <div class="tools"></div>
-    </div>
-
     <div class="content">
-        <% pictures.forEach(picture => { %>
-            <div class="album-container">
-                <p><%= picture.title %></p>
-                <div class="image-container">
-                    <a class="album-clickable" href="/albums/presentation/<%= album.id %>/<%= pictures.findIndex(p => p.id == picture.id) %>">
-                        <% if (picture.imgLoRes) { %>
-                            <img src="/<%= picture.imgLoRes %>" alt="no image available">
-                        <% }else { %>
-                            <img src="/no-image-available.svg" alt="no image available">
-                        <% } %>
-                    </a>
+        <div class="menu">
+            <div class="album-left">
+                <a class="back" href="/albums">
+                    <img src="/left-arrow.svg" alt="back arrow">
+                </a>
+            </div>
+            <div class="album-title"><%= album.title %></div>
+            <div class="album-right">
+                <div class="tools">
+                    <div class="presentation-button selected">
+                        <p>Presentation</p>
+                        <img src="/presentation.svg" alt="open presentation">
+                    </div>
+                    <div class="remove-selected-pictures-button selected">
+                        <p>Ta bort</p>
+                        <img src="/delete-button.svg" alt="delete selected pictures">
+                    </div>
                 </div>
             </div>
-        <% }) %>
+        </div>
+        
+        <div class="album-content">
+            <% pictures.forEach(picture => { %>
+                <div class="picture-container">
+                    <p><%= picture.title %></p>
+                    <div class="image-container" data-object="<%= JSON.stringify(picture) %>" data-id="<%= picture.id %>">
+                        <div class="rating">
+                            <% for( let index = 0; index < picture.rating; index++ ) { %>
+                                <img icon src="/star-icon.svg">
+                            <% } %>
+                        </div>
+                        <img class="image" src="/<%= picture.imgLoRes ? picture.imgLoRes : "no-image-available.svg" %>" alt="no image available">
+                    </div>
+                </div>
+            <% }) %>
+        </div>
     </div>
+
+    <div class="presentation-container">
+        <div class="presentation-bar">
+            <div class="presentation-left">
+                <div class="presentation-close">
+                    <img src="/close.svg" alt="close presentation">
+                </div>
+            </div>
+            <div class="presentation-title">Titel</div>
+            <div class="presentation-right">
+                <div class="presentation-tools">
+                    <div class="downloadbtn" id="downloadbtnjs">Download
+                        <div class="container popup" id="popup">
+                            <div class="triangle"></div>
+                            <div class="rectangle">
+                                <h1 padding-title>Download picture</h1>
+                                <a padding-link href="#" class="highRes" id="highResDown"><h2>High-Res Picture</h2></a>
+                                <a padding-link href="#" class="lowRes" id="lowResDown"><h2>Low-Res Picture</h2></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-comment-icon">Kommentar</div>
+                </div>
+            </div>
+        </div>
+            <div class="image-text-box">
+                <textarea name="comment" class="image-text"></textarea>
+                <div class="image-text-tools">
+                    <div class="save-box">Save Changes</div>
+                    <div class="edit-icon">
+                        <img src="/edit-button.svg" alt="edit text">
+                    </div>
+                </div>
+            </div>
+        <div class="presentation-content">
+
+
+
+            <div class="presentation-previous"><img src="/left-arrow.svg" alt=""></div>
+            <div class="presentation-image-container">
+                <img src="" alt="">
+            </div>
+            <div class="presentation-next"><img src="/right-arrow.svg" alt=""></div>
+        </div>
+    </div>
+
+    <script>
+        const albumId = "<%= album.id %>";
+        const allPictures = <%- JSON.stringify(pictures) %>;
+    </script>
+    <script src="/js/album.js"></script>
 
 </body>
 </html>

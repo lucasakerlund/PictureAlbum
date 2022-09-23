@@ -1,0 +1,345 @@
+.upload-window {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 60vw;
+    height: 70vh;
+    min-height: 300px;
+    background-color: rgba(24, 24, 24, 0.95);
+    border: 3px solid rgba(15, 15, 15, 0.7);
+    border-radius: 20px;
+    z-index: 999;
+    transition: top .5s ease;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.upload-window.active {
+    top: 50%;
+    transition: top .5s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.upload-content {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: none;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.close-upload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    z-index: 999;
+}
+
+.close-upload img {
+    width: 60px;
+    height: auto;
+}
+
+.close-upload:hover {
+    cursor: pointer;
+    background-color: rgba(141, 141, 141, .2);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+}
+
+#title, #description, #rating-text {
+    font-size: 1.5rem;
+    color: white;
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+
+#title-input:focus, #description-input:focus {
+    outline: none;
+    border: 2px solid aqua;
+    transition: border-color .5s ease;
+}
+
+#title-input, #description-input, #submit-button {
+    box-sizing: border-box;
+    color: white;
+    padding: 0 5px;
+    background-color: rgba(163, 163, 163, 0.3);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+#title-input {
+    width: 200px;
+    min-height: 40px;
+    font-size: 1.5rem;
+}
+
+#title-input:valid {
+    border-color: rgb(76, 243, 85);
+}
+
+#description-input {
+    font-size: 1.5rem;
+    min-height: 300px;
+    resize: none;
+}
+
+.upload-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.upload-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.image-type {
+    color: white;
+}
+
+/* Custom upload */
+
+input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.custom-image-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(163, 163, 163, 0.3);
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    margin: 5px 0 10px 0;
+}
+
+.upload-image-text {
+    color: white;
+    margin-bottom: 10px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.custom-image-input.uploaded {
+    background-color: rgba(255, 169, 111, 0.842);
+}
+
+.custom-image-input.uploaded:hover {
+    background-color: rgb(255, 169, 111);
+}
+
+.custom-image-input img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.custom-image-input:hover {
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.3);
+}
+
+.image-input:hover {
+    cursor: pointer;
+}
+
+/*Rating*/
+
+input[name="rating"] {
+    position: absolute;
+    top: 90%;
+    opacity: 0;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+.upload-rating {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.upload-rating label {
+    width: 50px;
+    height: 50px;
+}
+
+.star {
+    color: rgba(255, 255, 255, 0.219);
+}
+
+input[name="rating"]:checked ~ label .star {
+    color: yellow;
+}
+
+label:hover ~ label .star,
+label:hover .star {
+    color: rgb(78, 78, 0);
+    cursor: pointer;
+}
+
+/*Select*/
+
+.custom-select {
+    width: 400px;
+    max-width: 100%;
+}
+
+.custom-select p {
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-select select {
+    width: 100%;
+    height: auto;
+    background-color: rgba(24, 24, 24, 1);
+    border: 3px solid rgba(15, 15, 15, 1);
+    border-radius: 10px;
+    outline: none;
+    overflow: auto;
+}
+
+.custom-select select option {
+    height: auto;
+    background-color: rgba(163, 163, 163, 0.3);
+    color: white;
+    font-size: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px 0 10px 10px;
+}
+
+.custom-select select option:hover {
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.3);
+}
+
+option:checked {
+    background-image: linear-gradient(grey, grey);
+}
+
+#submit-button {
+    position: relative;
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: rgba(79, 175, 0, 0.842);
+    white-space: normal;
+}
+
+#submit-button:hover {
+    background-color: rgb(79, 175, 0);
+    cursor: pointer;
+}
+
+.preview-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 50%;
+    border-left: 3px solid rgba(15, 15, 15, 1);
+}
+
+.preview-image img {
+    flex: 0;
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(22, 22, 22, 0.808);
+}
+
+@media (max-width: 1250px) {
+
+    .form {
+        overflow: unset;
+        height: auto;
+        flex-wrap: nowrap;
+        margin-bottom: 10px;
+    }
+
+    .upload-content {
+        overflow-y: auto;
+        display: initial;
+    }
+
+    .preview-image {
+        position: relative;
+        border: none;
+        height: auto;
+    }
+
+    .preview-image img {
+        max-height: 500px;
+    }
+}
+
+@media (max-width: 700px){
+    .upload-window.active {
+        position: absolute;
+        translate: 0 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border: none;
+        border-radius: 0;
+        transition: none;
+    }
+}

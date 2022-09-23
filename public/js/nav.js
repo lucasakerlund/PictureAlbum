@@ -1,7 +1,13 @@
-let hamburgerMenu = document.getElementById("hamburger-menu");
-let navbarMenu = document.querySelector(".navbar-menu");
+"use strict";
 
-console.log(navbarMenu);
+const hamburgerMenu = document.getElementById("hamburger-menu");
+const navbarMenu = document.querySelector(".navbar-menu");
+const navUploadButton = document.querySelector('.navbar-upload');
+const uploadWindow = document.querySelector('.upload-window');
+
+navUploadButton.addEventListener('click', () => {
+    uploadWindow.classList.toggle('active');
+});
 
 hamburgerMenu.addEventListener('click', () => {
     hamburgerMenu.classList.toggle("active");

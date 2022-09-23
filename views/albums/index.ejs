@@ -2,26 +2,74 @@
 <html lang="en">
     <%- include('../components/head.ejs') %>
     <link rel="stylesheet" href="/css/albums.css">
+    <link rel="stylesheet" href="/css/createAlbum.css">
 <body>
 
     <%- include('../components/nav.ejs')%>
-    
+     
     <div class="content">
+        <div class="album-container">
+            <p>Skapa album</p>
+            <div class="image-container create-container">
+                <a href="#" class="album-clickable">
+                    <img src="/create-album.svg" alt="">
+                </a>
+            </div>
+        </div>
+        <% ratingAlbums.forEach(album => { %>
+            <div class="album-container">
+                <p><%= album.title %></p>
+                <div class="image-container rating-album">
+                    <a class="album-clickable" href="/albums/<%= album.id %>">
+                        <img src="<%= album.image %>" alt="no image available">
+                    </a>
+                </div>
+            </div>
+        <% }); %>
         <% albums.forEach(album => { %>
             <div class="album-container">
                 <p><%= album.title %></p>
                 <div class="image-container">
                     <a class="album-clickable" href="/albums/<%= album.id %>">
                         <% if (album.image) { %>
-                            <img src="/<%= album.image %>" alt="no image available">
+                            <img src="/<%= album.image %>" alt="image of the album">
                         <% }else { %>
                             <img src="/no-image-available.svg" alt="no image available">
                         <% } %>
                     </a>
                 </div>
             </div>
-        <% }) %>
+        <% }); %>
     </div>
+
+    <!-- the elements below uses the upload.css. Perhaps bad practise, but works -->
+    <div class="create-window">
+        <div class="upload-content">
+            <div class="close-create-album">
+                <img src="/close.svg" alt="">
+            </div>
+            <form class="form" action="/albums/create" method="POST" enctype='multipart/form-data'>
+                <label for="title-input" id="title">Titel</label>
+                <input type="text" id="title-input" name="title" required>
+                <label for="description-input" id="description">Beskrivning</label>
+                <textarea name="description" id="description-input" cols="30" rows="10"></textarea>
+                <div class="upload-item" id="image-item-create-album">
+                    <label class="custom-image-input" required>
+                        <img src="/upload-image.svg" alt="">
+                        <p>Välj bild</p>
+                        <input type="file" name="image" class="image-input" id="image-input-create-album" accept="image/png, image/jpeg" required>
+                    </label>
+                    <p class="upload-image-text">Ingen fil har valts</p>
+                </div>
+                <input type="submit" id="submit-button" value="Skapa">
+            </form>
+            <div class="preview-image" id="preview-image-create-album">
+                <img src="/image-preview.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/albums.js"></script>
     
 </body>
 </html>
