@@ -576,6 +576,7 @@ h1[padding-title]{
 
 @media (max-width: 450px) {
     .presentation-bar {
+        height: 110px;
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: 100px auto;
@@ -596,10 +597,37 @@ h1[padding-title]{
     }
 
     .presentation-right {
+        flex: 1;
         grid-area: tools;
+        width: 100%;
     }
 
     .image-text-box {
         width: 50vw;
+    }
+    
+    .presentation-tools {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .presentation-tools > div {
+        flex: 0;
+        position: static;
+        align-self: flex-start;
+        margin: 0;
+    }
+
+    .container {
+        translate: 0 0;
+        left: 0;
+        width: 100vw;
+        animation: none;
+    }
+
+    .triangle {
+        display: none;
     }
 }
