@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const albumsRoutes = require('./routes/albumsRoutes');
 const albumRoutes = require('./routes/albumRoutes');

@@ -1,3 +1,5 @@
+"use strict";
+
 const createContainer = document.querySelector('.create-container');
 const createWindow = document.querySelector('.create-window');
 const imageItem = document.getElementById('image-item-create-album');
