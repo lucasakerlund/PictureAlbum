@@ -14,7 +14,10 @@
       "ef060edb-38e3-47bc-8c72-0ae6d6f90dab",
       "44c49905-88a2-41da-b26e-ccbfe3cab883",
       "9a095d2c-ff3b-4b5f-ac4b-522df094b776",
-      "da141d7b-44d2-45c9-bb86-40f664a3eed3"
+      "da141d7b-44d2-45c9-bb86-40f664a3eed3",
+      "47f6d3fb-dcda-42f9-b9e9-417fc3762342",
+      "ec19cdbb-96b0-4e1f-ab03-ea9d4ba0b7b9",
+      "df0f93ae-ba0f-459d-9ff5-11a6ae06c00c"
     ]
   },
   {
@@ -24,7 +27,10 @@
     "image": "PIA03244~small.jpg",
     "picture_ids": [
       "l66egbjmdy9wsosa5wu",
-      "609b235c-519a-4eda-b862-e61ece7036e9"
+      "609b235c-519a-4eda-b862-e61ece7036e9",
+      "47f6d3fb-dcda-42f9-b9e9-417fc3762342",
+      "ec19cdbb-96b0-4e1f-ab03-ea9d4ba0b7b9",
+      "df0f93ae-ba0f-459d-9ff5-11a6ae06c00c"
     ]
   },
   {
@@ -32,6 +38,9 @@
     "title": "fsdfdsfz<sef",
     "description": "asfeasefasef",
     "image": "e1a29c40eb5581bfee886762b28a78a6",
-    "picture_ids": []
+    "picture_ids": [
+      "47f6d3fb-dcda-42f9-b9e9-417fc3762342",
+      "ec19cdbb-96b0-4e1f-ab03-ea9d4ba0b7b9"
+    ]
   }
 ]
